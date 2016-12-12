@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MLQuiniela.Classes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,7 +13,8 @@ namespace MLQuiniela
         {
             // Historic League Data Load.
             Console.WriteLine("Retrieving Historic Data...");
-            Utils.ReadCSV.readFiles();
+            List<HistoricMatch> historics = Utils.ReadCSV.readFiles();
+
             // Week Matchs Load.
             Console.WriteLine("Loading matchs of the week...");
 

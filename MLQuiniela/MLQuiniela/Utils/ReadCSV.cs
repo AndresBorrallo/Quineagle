@@ -14,8 +14,9 @@ namespace MLQuiniela.Utils
         // Store the path to the directory with results.
         private static string baseDirectory = "..\\..\\..\\..\\Historic Results\\";
         
-        public static void readFiles()
+        public static List<HistoricMatch> readFiles()
         {
+            List<HistoricMatch> hMatches = new List<HistoricMatch>();
 
             // Process the list of files found in the directory.
             string[] fileEntries = Directory.GetFiles(baseDirectory);
@@ -27,22 +28,25 @@ namespace MLQuiniela.Utils
 
                 // Header
                 string line = reader.ReadLine();
-                List<HistoricMatch> hMatches = new List<HistoricMatch>();
+               
                 while (!reader.EndOfStream)
                 {
                     HistoricMatch hMatch = new HistoricMatch();
                     line = reader.ReadLine();
                     string[] values = line.Split(',');
 
-                    foreach (string v in values)
-                    {
-                        Console.Write(v.Trim().ToUpper());
-                    }
-                    hMatches.Add(hMatch);
+                    hMatches.Add(hMatch.historicMatch(values[0].Trim().ToUpper(),
+                            values[1].Trim().ToUpper(), 
+                            values[2].Trim().ToUpper(), 
+                            values[3].Trim().ToUpper(),
+                            values[4].Trim().ToUpper(), 
+                            values[5].Trim().ToUpper(), 
+                            values[6].Trim().ToUpper()));                    
                 }
                 reader.Close();
             }
 
+            return hMatches;
         }
     }
 }
