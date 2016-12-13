@@ -1,6 +1,0 @@
-F:\Jaime\MLQuiniela\MLQuiniela\MLQuiniela\bin\Debug\MLQuiniela.exe.config
-F:\Jaime\MLQuiniela\MLQuiniela\MLQuiniela\bin\Debug\MLQuiniela.exe
-F:\Jaime\MLQuiniela\MLQuiniela\MLQuiniela\bin\Debug\MLQuiniela.pdb
-F:\Jaime\MLQuiniela\MLQuiniela\MLQuiniela\obj\Debug\MLQuiniela.csprojResolveAssemblyReference.cache
-F:\Jaime\MLQuiniela\MLQuiniela\MLQuiniela\obj\Debug\MLQuiniela.exe
-F:\Jaime\MLQuiniela\MLQuiniela\MLQuiniela\obj\Debug\MLQuiniela.pdb
