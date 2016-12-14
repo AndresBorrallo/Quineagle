@@ -60,9 +60,5 @@ namespace MLQuiniela
             Console.ReadKey();
         }
 
-		public float SolveForm( List<Nomio> formula )
-		{
-			return formula.Sum( a => a.Variable * a.Weight );
-		}
     }
 }

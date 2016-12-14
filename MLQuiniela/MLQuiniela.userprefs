@@ -1,8 +1,9 @@
 ﻿<Properties StartupConfiguration="{93142EB1-5542-45C8-851A-1AEC1ABFCCDC}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="MLQuiniela/Program.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="MLQuiniela/Statistic/ClassificationStatistic.cs">
     <Files>
       <File FileName="MLQuiniela/Statistic/HistoricalStatistic.cs" Line="11" Column="4" />
-      <File FileName="MLQuiniela/Program.cs" Line="66" Column="4" />
+      <File FileName="MLQuiniela/Program.cs" Line="62" Column="3" />
+      <File FileName="MLQuiniela/Statistic/ClassificationStatistic.cs" Line="23" Column="4" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
