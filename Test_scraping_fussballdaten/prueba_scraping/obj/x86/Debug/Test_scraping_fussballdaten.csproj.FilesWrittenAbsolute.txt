@@ -1,6 +1,0 @@
-/Users/jesus/Projects/Quineagle/Test_scraping_fussballdaten/prueba_scraping/obj/x86/Debug/.NETFramework,Version=v4.5.AssemblyAttribute.cs
-/Users/jesus/Projects/Quineagle/Test_scraping_fussballdaten/prueba_scraping/bin/Debug/HtmlAgilityPack.dll
-/Users/jesus/Projects/Quineagle/Test_scraping_fussballdaten/prueba_scraping/bin/Debug/prueba_scraping.exe.mdb
-/Users/jesus/Projects/Quineagle/Test_scraping_fussballdaten/prueba_scraping/bin/Debug/prueba_scraping.exe
-/Users/jesus/Projects/Quineagle/Test_scraping_fussballdaten/prueba_scraping/obj/x86/Debug/prueba_scraping.exe
-/Users/jesus/Projects/Quineagle/Test_scraping_fussballdaten/prueba_scraping/obj/x86/Debug/prueba_scraping.exe.mdb
