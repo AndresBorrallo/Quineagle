@@ -9,13 +9,57 @@ namespace prueba_scraping
 {
 	public class Scrap
 	{
-		public Scrap()
+		private const string PRIMERA = "";
+		private const string SEGUNDA = "segundadivision";
+
+		private Dictionary<int, List<Match>> History = new Dictionary<int, List<Match>>();
+
+		public void LoadHistory( int YearFrom, int YearTo )
 		{
+			for( int y = YearFrom; y <= YearTo; y++ )
+			{
+				History.Add( y, new List<Match>() );
+
+				var doc_primera = DownloadDocument( PRIMERA, y.ToString());
+
+				var nodes = doc_primera.DocumentNode
+					  .SelectNodes( "//div[@id=\"rt_Kreuztabelle\"]/table/tr/td" )
+						.Skip( 1 );
+
+				foreach( var nn in nodes.Skip( 1 ) )
+				{
+					nn.SelectNodes( "td[@class='Gegner']" );
+					var fc = nn.ChildNodes;
+
+
+				}
+
+
+				//History[ y ].AddRange( GetMatchs(nodes) );
+			}
 		}
 
-		// http://www.fussballdaten.de/spanien/2013/
-		// http://www.fussballdaten.de/spanien/segundadivision/2013/
+		/*private List<Match> GetMatchs( HtmlNode nodes )
+		{
+			List<Match> matchs = new List<Match>();
 
+			nodes.SelectNodes( "//td[@class=\"Gegner\"]" )
+			     .Select( a =>  matchs.Add( new Match()
+				 {
+					 LocalTeam = a.InnerHtml,
+					 LocalTeamGoals = int.Parse( a.InnerText.Split( ':' )[ 0 ] ),
+					 VisitingTeam = "..",
+					 VisitingTeamGoals = int.Parse( a.InnerText.Split( ':' )[ 1 ] )
+				 } ) );
+
+			return matchs;
+
+		}*/
+
+		/// <summary>
+		/// http://www.fussballdaten.de/spanien/2013/
+		/// http://www.fussballdaten.de/spanien/segundadivision/2013/
+		/// </summary>
 		private HtmlDocument DownloadDocument( string liga ,string season )
 		{
 			var url = string.Format( $"http://www.fussballdaten.de/spanien/{liga}/{season}" );

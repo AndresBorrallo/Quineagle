@@ -33,6 +33,8 @@ namespace prueba_scraping
 				Console.WriteLine( $"{c.Pos}\t{c.Name}\t{c.MatchPlayed}\t{c.MatchWins}\t{c.MatchTied}\t{c.MatchLost}\t{c.FavourGoals}\t{c.AgainstGoals}\t{c.Points}" );
 			}
 
+			scrap.LoadHistory( 1993, 1995 );
+
 			Console.ReadKey();
 		}
 	}
