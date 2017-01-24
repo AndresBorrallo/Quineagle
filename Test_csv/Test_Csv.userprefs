@@ -1,0 +1,18 @@
+﻿<Properties StartupConfiguration="{98F9C9A8-3AF5-4D72-BE0B-FC28D1453A05}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Configuration.json">
+    <Files>
+      <File FileName="ApiRequester.cs" Line="34" Column="1" />
+      <File FileName="Program.cs" Line="37" Column="41" />
+      <File FileName="Configuration.json" Line="3" Column="46" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
+  <MonoDevelop.Ide.ItemProperties.Test__Csv PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/Users/jesus/Projects/Quineagle/Test_csv/ApiRequester.cs" line="36" column="1" />
+      <Breakpoint file="/Users/jesus/Projects/Quineagle/Test_csv/ApiRequester.cs" line="32" column="1" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
