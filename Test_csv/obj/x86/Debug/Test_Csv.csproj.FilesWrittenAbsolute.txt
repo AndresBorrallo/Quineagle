@@ -5,3 +5,4 @@
 /Users/jesus/Projects/Quineagle/Test_csv/obj/x86/Debug/Test_Csv.exe
 /Users/jesus/Projects/Quineagle/Test_csv/obj/x86/Debug/Test_Csv.exe.mdb
 /Users/jesus/Projects/Quineagle/Test_csv/bin/Debug/Newtonsoft.Json.dll
+/Users/jesus/Projects/Quineagle/Test_csv/bin/Debug/HtmlAgilityPack.dll

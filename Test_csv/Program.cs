@@ -25,16 +25,21 @@ namespace Test_Csv
 			hm.GetStatistic( "Barcelona B", "Sevilla" );
 			*/
 
+			/*
 			ApiRequester ar = new ApiRequester()
 			{
 				API_KEY = configuration.API_KEY,
 				API_URL = configuration.API_URL,
 				RequestHeader = configuration.RequestHeader,
-				PrimeraDivisionRequest = configuration.PrimeraDivisionRequest,
-				SegundaDivisionRequest = configuration.SegundaDivisionRequest
+				LeagueRequest = configuration.LeagueRequest
 			};
 
 			ar.GetLeagueTable( LeagueEnum.SEGUNDA );
+			*/
+
+			var fq = new FixtureRequester() { QuinielaFixtureURL = configuration.QuinielaFixtureURL };
+
+			fq.LoadFixtures();
 
 			Console.ReadKey();
 		}
