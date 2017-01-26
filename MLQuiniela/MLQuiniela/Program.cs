@@ -14,33 +14,9 @@ namespace MLQuiniela
     {
         static void Main(string[] args)
         {
-            // Historic League Data Load.
-            Console.WriteLine("Retrieving Historic Data...");
-            List<HistoricMatch> historics = Utils.ReadCSV.readFiles();
+			static readonly ILog _log = LogManager.GetLogger( typeof( Program ) );
 
-            // Week Matchs Load.
-            Console.WriteLine("Loading matchs of the week...");
-
-            // Filter util data.
-            Console.WriteLine("Filtering util historics...");
-
-            // Process data.
-            Console.WriteLine("Processing data...");
-
-            // Last 5 matches for each team
-            Console.WriteLine("Searching last matches...");
-
-            // Make posible results.
-            Console.WriteLine("Executing algorithm for predictions...");
-
-            // Assing value for results.
-            Console.WriteLine("Results will be assigned now.");
-
-            // Print predictions.
-            Console.WriteLine("\n------------------------------");
-            Console.WriteLine("\tPredictions");
-            Console.WriteLine("------------------------------");
-
+            
 			Quiniela quiniela = new Quiniela();
 			// add empairments
 
