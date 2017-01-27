@@ -25,6 +25,8 @@ namespace MLQuiniela.Historic
 				Log.Debug($"Descargando csv de {url}");
 				_loadHistoricFromUrl( url );
 			}
+
+			Log.Info( $"Historical Loaded with {_matchs.Count} matchs" );
 		}
 
 		private void _loadHistoricFromUrl( string url )

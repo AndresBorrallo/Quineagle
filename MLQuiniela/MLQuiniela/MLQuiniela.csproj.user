@@ -10,4 +10,9 @@
     <FallbackCulture>en-US</FallbackCulture>
     <VerifyUploadedFiles>false</VerifyUploadedFiles>
   </PropertyGroup>
+  <PropertyGroup Condition=" '$(RunConfiguration)' == 'Default' ">
+    <StartAction>Project</StartAction>
+    <StartProgram>..\..\..\..\..\..\Applications\Utilities\Terminal.app</StartProgram>
+    <ExternalConsole>true</ExternalConsole>
+  </PropertyGroup>
 </Project>

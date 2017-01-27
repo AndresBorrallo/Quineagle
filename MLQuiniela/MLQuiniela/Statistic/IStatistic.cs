@@ -5,6 +5,6 @@ namespace MLQuiniela.Statistic
 	{
 		float Weight { get; set; }
 
-		float GetStatistic (Fixture ficture);
+		float GetStatistic (Fixture fixture);
 	}
 }

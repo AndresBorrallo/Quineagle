@@ -12,6 +12,7 @@ using System.IO;
 using MLQuiniela.Fixtures;
 using MLQuiniela.Historic;
 using MLQuiniela.Clasification;
+using log4net.Config;
 
 namespace MLQuiniela
 {
@@ -21,9 +22,11 @@ namespace MLQuiniela
 
         static void Main(string[] args)
         {
+			InitializeLog4net();
+
 			// Cargamos la configuracion
 			Log.Info( "Cargando configuracion" );
-			Configuration configuration = JsonConvert.DeserializeObject<Configuration>( File.ReadAllText( @"Configuration.json" ) );
+			Configuration configuration = JsonConvert.DeserializeObject<Configuration>( File.ReadAllText( @"./Configuration.json" ) );
 
 			// Cargamos los emparejamientos
 			Log.Info( "Cargando Emparejamientos" );
@@ -78,5 +81,14 @@ namespace MLQuiniela
             Console.ReadKey();
         }
 
+		private static void InitializeLog4net()
+		{
+			Assembly EntryAssembly = Assembly.GetEntryAssembly();
+			string AppPath = string.Format( "{0}{1}", Path.GetDirectoryName( EntryAssembly.Location ), Path.DirectorySeparatorChar );
+			Directory.SetCurrentDirectory( AppPath );
+			XmlConfigurator.Configure( new FileInfo( AppDomain.CurrentDomain.SetupInformation.ConfigurationFile ) );   // configure log4net
+			Log.Info( AppPath + ", " + Environment.CurrentDirectory );
+			Log.Info( "Initializating application" );
+		}
     }
 }

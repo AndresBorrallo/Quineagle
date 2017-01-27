@@ -19,9 +19,11 @@ namespace MLQuiniela.Statistic
 		/// </summary>
 		/// <returns>The statistic.</returns>
 		/// <param name="empairment">Empairment.</param>
-		public float GetStatistic( Fixture ficture )
+		public float GetStatistic( Fixture fixture )
 		{
-			throw new NotImplementedException();
+
+			//throw new NotImplementedException();
+			return 100.0f;
 		}
 
 

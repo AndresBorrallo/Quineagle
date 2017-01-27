@@ -9,9 +9,9 @@ namespace MLQuiniela.Statistic
 
 		public float Weight { get; set; }
 
-		public float GetStatistic( Fixture empairment )
+		public float GetStatistic( Fixture fixture )
 		{
-			var statistic = historics.GetStatistic( empairment.HomeTeam, empairment.AwayTeam );
+			var statistic = historics.GetStatistic( fixture.HomeTeam, fixture.AwayTeam );
 
 			// OJO CUIDADO!! quizas haya que devolver otra cosa o hacer calculos con los resultados
 			return statistic.WinsPercent;
