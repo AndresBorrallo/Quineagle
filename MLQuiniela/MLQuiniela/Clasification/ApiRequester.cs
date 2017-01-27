@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Net;
+using System.Linq;
 using System.Reflection;
 using log4net;
+using MMLib.Extensions;
 using Newtonsoft.Json;
 
 namespace MLQuiniela.Clasification
@@ -21,7 +23,12 @@ namespace MLQuiniela.Clasification
 
 		public string API_URL { get; set; }
 
-		public LeagueTable GetLeagueTable( LeagueEnum league )
+		private LeagueTable _primeraDivision = null;
+
+		private LeagueTable _segundaDivision = null;
+
+
+		public void DownloadLeague( LeagueEnum league )
 		{
 			LeagueTable table = null;
 
@@ -43,6 +50,9 @@ namespace MLQuiniela.Clasification
 					var json = wc.DownloadString( request );
 					table = JsonConvert.DeserializeObject<LeagueTable>( json );
 				}
+
+				// convierto los nombres a mayusculas y sin acentos
+				table.standing.Select( a => { a.teamName = a.teamName.RemoveDiacritics().ToUpper(); return a; } ).ToList();
 			}
 			catch( Exception e )
 			{
@@ -50,7 +60,32 @@ namespace MLQuiniela.Clasification
 				Log.Warn( e.Message );
 			}
 
-			return table;
+			if( league == LeagueEnum.PRIMERA )
+				_primeraDivision = table;
+			else
+				_segundaDivision = table;
+		}
+
+		public LeagueTable GetLeague( LeagueEnum league )
+		{
+			LeagueTable tabla = null;
+
+			if( league == LeagueEnum.PRIMERA )
+			{
+				if( _primeraDivision == null )
+					DownloadLeague( league );
+
+				tabla = _primeraDivision;
+			}
+			else
+			{
+				if( _segundaDivision == null )
+					DownloadLeague( league );
+
+				tabla = _segundaDivision;
+			}
+
+			return tabla;
 		}
 
 	}

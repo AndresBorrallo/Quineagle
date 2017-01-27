@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net;
 using System.Reflection;
 using log4net;
+using MMLib.Extensions;
 
 namespace MLQuiniela.Historic
 {
@@ -51,8 +52,8 @@ namespace MLQuiniela.Historic
 					{
 						Match m = new Match()
 						{
-							HomeTeam = values[ 2 ],
-							AwayTeam = values[ 3 ],
+							HomeTeam = values[ 2 ].RemoveDiacritics().ToUpper(),
+							AwayTeam = values[ 3 ].RemoveDiacritics().ToUpper(),
 							HomeTeamGoal = int.Parse( values[ 4 ] ),
 							AwayTeamGoal = int.Parse( values[ 5 ] )
 						};

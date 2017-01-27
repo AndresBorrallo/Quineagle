@@ -5,6 +5,8 @@ using HtmlAgilityPack;
 using log4net;
 using System.Reflection;
 using System;
+using MMLib;
+using MMLib.Extensions;
 
 namespace MLQuiniela.Fixtures
 {
@@ -37,8 +39,8 @@ namespace MLQuiniela.Fixtures
 									  .Replace( " - ", "-" ).Replace( "<br>", "-" )
 									  .Split( '-' );
 
-					fx.HomeTeam = equipos[ 0 ];
-					fx.AwayTeam = equipos[ 1 ];
+					fx.HomeTeam = equipos[ 0 ].RemoveDiacritics().ToUpper();
+					fx.AwayTeam = equipos[ 1 ].RemoveDiacritics().ToUpper();
 
 					// Miramos si es un emparejamiento clasico (1,x,2) o de los nuevos (0,1,2,M)
 					var div = node.SelectSingleNode( "td[ @class='cell results results-centered' ]/div" );

@@ -41,8 +41,8 @@ namespace MLQuiniela
 			HistoricMatchs hm = new HistoricMatchs();
 			hm.LoadHistoric( configuration.Csv_URLs );
 
-			// Cargamos Clase para preguntar clasificacion a la API
-			Log.Info( "Cargando Clase para preguntar clasificacion a la API" );
+			// Cargamos clasificacion
+			Log.Info( "Cargando clasificacion" );
 			ApiRequester ar = new ApiRequester()
 			{
 				API_KEY = configuration.API_KEY,
@@ -50,6 +50,8 @@ namespace MLQuiniela
 				RequestHeader = configuration.RequestHeader,
 				LeagueRequest = configuration.LeagueRequest
 			};
+			ar.DownloadLeague( LeagueEnum.PRIMERA );
+			ar.DownloadLeague( LeagueEnum.SEGUNDA );
 
 			// Preparamos clases para hacer calculos
 			IStatistic historical_st = new HistoricalStatistic() 

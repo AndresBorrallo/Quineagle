@@ -1,16 +1,15 @@
 ﻿<Properties StartupConfiguration="{93142EB1-5542-45C8-851A-1AEC1ABFCCDC}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="MLQuiniela/Statistic/HistoricalStatistic.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="MLQuiniela/Historic/HistoricMatchs.cs">
     <Files>
-      <File FileName="MLQuiniela/Statistic/IStatistic.cs" Line="7" Column="3" />
-      <File FileName="MLQuiniela/Program.cs" Line="73" Column="1" />
-      <File FileName="MLQuiniela/Historic/HistoricMatchs.cs" Line="28" Column="4" />
-      <File FileName="MLQuiniela/Statistic/HistoricalStatistic.cs" Line="13" Column="1" />
+      <File FileName="MLQuiniela/Statistic/HistoricalStatistic.cs" Line="14" Column="1" />
+      <File FileName="MLQuiniela/Program.cs" Line="75" Column="1" />
+      <File FileName="MLQuiniela/Historic/HistoricMatchs.cs" Line="91" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
-      <Breakpoint file="/Users/jesus/Projects/Quineagle/MLQuiniela/MLQuiniela/Program.cs" line="73" column="1" />
+      <Breakpoint file="/Users/jesus/Projects/Quineagle/MLQuiniela/MLQuiniela/Statistic/HistoricalStatistic.cs" line="14" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
