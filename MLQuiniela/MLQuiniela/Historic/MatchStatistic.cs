@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MLQuiniela.Classes
+namespace MLQuiniela.Historic
 {
 	/// <summary>
 	/// Estadisticas historicas par dos equipos

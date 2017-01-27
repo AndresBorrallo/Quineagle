@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MLQuiniela.Classes
+﻿
+namespace MLQuiniela.Historic
 {
 	/// <summary>
 	/// Un Partido dado y los goles de uno y otro equipo

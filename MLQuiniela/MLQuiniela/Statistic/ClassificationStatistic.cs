@@ -1,13 +1,13 @@
 ﻿using System;
-using MLQuiniela.Classes;
+using MLQuiniela.Clasification;
 
 namespace MLQuiniela.Statistic
 {
 	public class ClassificationStatistic : IStatistic
 	{
-		public ClassificationStatistic( /* Add Classification Table here */ )
-		{
-		}
+		public ApiRequester req { get; set; }
+		
+		public float Weight { get; set; }
 
 		/// <summary>
 		/// Get Probability of victory of TeamA over TeamB.
@@ -19,9 +19,12 @@ namespace MLQuiniela.Statistic
 		/// </summary>
 		/// <returns>The statistic.</returns>
 		/// <param name="empairment">Empairment.</param>
-		public float GetStatistic( Empairment empairment )
+		public float GetStatistic( Fixture ficture )
 		{
 			throw new NotImplementedException();
 		}
+
+
+
 	}
 }

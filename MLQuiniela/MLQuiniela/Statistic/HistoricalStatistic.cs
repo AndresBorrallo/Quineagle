@@ -1,18 +1,20 @@
 ﻿using System;
-using MLQuiniela.Classes;
+using MLQuiniela.Historic;
 
 namespace MLQuiniela.Statistic
 {
 	public class HistoricalStatistic : IStatistic
 	{
-		public HistoricalStatistic( /* Add Historical here */)
-		{
-			;
-		}
+		public HistoricMatchs historics { get; set; }
 
-		public float GetStatistic( Empairment empairment )
+		public float Weight { get; set; }
+
+		public float GetStatistic( Fixture empairment )
 		{
-			throw new NotImplementedException();
+			var statistic = historics.GetStatistic( empairment.HomeTeam, empairment.AwayTeam );
+
+			// OJO CUIDADO!! quizas haya que devolver otra cosa o hacer calculos con los resultados
+			return statistic.WinsPercent;
 		}
 	}
 }

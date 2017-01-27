@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MLQuiniela.Classes
+namespace MLQuiniela
 {
 	/// <summary>
 	/// Un nomio de una formula dada

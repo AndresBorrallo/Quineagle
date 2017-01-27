@@ -3,15 +3,18 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
-using MLQuiniela.Classes;
+using System.Reflection;
+using log4net;
 
-namespace MLQuiniela.Classes
+namespace MLQuiniela.Historic
 {
 	/// <summary>
 	/// Carga historicos a partir de una lista de urls
 	/// </summary>
 	public class HistoricMatchs
 	{
+		private ILog Log { get; } = LogManager.GetLogger( MethodBase.GetCurrentMethod().DeclaringType );
+
 		private List<Match> _matchs = new List<Match>();
 
 		public void LoadHistoric( List<string> urls )
@@ -19,38 +22,47 @@ namespace MLQuiniela.Classes
 			_matchs.Clear();
 			foreach( string url in urls )
 			{
-				Console.WriteLine( $"Descargando csv de {url}" );
+				Log.Debug($"Descargando csv de {url}");
 				_loadHistoricFromUrl( url );
 			}
 		}
 
 		private void _loadHistoricFromUrl( string url )
 		{
-			string fileList = _getCSV( url );
-			IEnumerable<string> lines;
-
-			lines = fileList.Split( '\n' ).Skip( 1 );
-
-			foreach( string line in lines )
+			try
 			{
-				string[] values = line.Split( ',' );
 
-				if( values.Length >= 6 &&
-					!string.IsNullOrWhiteSpace( values[ 2 ] ) &&
-				   	!string.IsNullOrWhiteSpace( values[ 3 ] ) &&
-				  	!string.IsNullOrWhiteSpace( values[ 4 ] ) &&
-				   	!string.IsNullOrWhiteSpace( values[ 5 ] ) )
+				string fileList = _getCSV( url );
+				IEnumerable<string> lines;
+
+				lines = fileList.Split( '\n' ).Skip( 1 );
+
+				foreach( string line in lines )
 				{
-					Match m = new Match()
-					{
-						HomeTeam = values[ 2 ],
-						AwayTeam = values[ 3 ],
-						HomeTeamGoal = int.Parse( values[ 4 ] ),
-						AwayTeamGoal = int.Parse( values[ 5 ] )
-					};
+					string[] values = line.Split( ',' );
 
-					_matchs.Add( m );
+					if( values.Length >= 6 &&
+						!string.IsNullOrWhiteSpace( values[ 2 ] ) &&
+						   !string.IsNullOrWhiteSpace( values[ 3 ] ) &&
+						  !string.IsNullOrWhiteSpace( values[ 4 ] ) &&
+						   !string.IsNullOrWhiteSpace( values[ 5 ] ) )
+					{
+						Match m = new Match()
+						{
+							HomeTeam = values[ 2 ],
+							AwayTeam = values[ 3 ],
+							HomeTeamGoal = int.Parse( values[ 4 ] ),
+							AwayTeamGoal = int.Parse( values[ 5 ] )
+						};
+
+						_matchs.Add( m );
+					}
 				}
+			}
+			catch( Exception e )
+			{
+				Log.Warn( "Excepcion descargando ficheros historicos" );
+				Log.Warn( e.Message );
 			}
 		}
 
@@ -84,12 +96,17 @@ namespace MLQuiniela.Classes
 				int losts = matches.Where( a => a.HomeTeamGoal < a.AwayTeamGoal ).Count();
 
 				ms.WinsPercent = ( float )wins/n_matchs * 100;
-				ms.DrawsPercent = ( float )wins/n_matchs * 100;
+				ms.DrawsPercent = ( float )draws/n_matchs * 100;
 				ms.LostPercent = ( float )losts/n_matchs  * 100;
+
+				if( n_matchs < 10 )
+				{
+					Log.Warn( $"OJO CUIDADO! solo hay {n_matchs} partidos de {HomeTeam} vs {AwayTeam} para hacer estadisticas" );
+				}
 			}
 			else
 			{
-				Console.WriteLine( $"No se encontraron partidos para {HomeTeam} vs {AwayTeam}" );
+				Log.Warn( $"No se encontraron partidos para {HomeTeam} vs {AwayTeam}" );
 			}
 
 			return ms;

@@ -1,38 +1,78 @@
-﻿using MLQuiniela.Classes;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using MLQuiniela.Classes;
 using MLQuiniela.Statistic;
 
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using log4net;
+using System.Reflection;
+using Newtonsoft.Json;
+using System.IO;
+using MLQuiniela.Fixtures;
+using MLQuiniela.Historic;
+using MLQuiniela.Clasification;
 
 namespace MLQuiniela
 {
-    class Program
+    public class Program
     {
+		static public ILog Log { get; } = LogManager.GetLogger( MethodBase.GetCurrentMethod().DeclaringType );
+
         static void Main(string[] args)
         {
-			static readonly ILog _log = LogManager.GetLogger( typeof( Program ) );
+			// Cargamos la configuracion
+			Log.Info( "Cargando configuracion" );
+			Configuration configuration = JsonConvert.DeserializeObject<Configuration>( File.ReadAllText( @"Configuration.json" ) );
 
-            
-			Quiniela quiniela = new Quiniela();
-			// add empairments
+			// Cargamos los emparejamientos
+			Log.Info( "Cargando Emparejamientos" );
+			FixtureRequester fr = new FixtureRequester() 
+			{ 
+				QuinielaFixtureURL = configuration.QuinielaFixtureURL 
+			};
+			fr.LoadFixtures();
 
-			IStatistic historical_st = new HistoricalStatistic();
-			IStatistic classification_st = new ClassificationStatistic();
+			// Cargamos historicos
+			Log.Info( "Cargando historicos" );
+			HistoricMatchs hm = new HistoricMatchs();
+			hm.LoadHistoric( configuration.Csv_URLs );
 
-			foreach( var a in quiniela.Empairments )
+			// Cargamos Clase para preguntar clasificacion a la API
+			Log.Info( "Cargando Clase para preguntar clasificacion a la API" );
+			ApiRequester ar = new ApiRequester()
+			{
+				API_KEY = configuration.API_KEY,
+				API_URL = configuration.API_URL,
+				RequestHeader = configuration.RequestHeader,
+				LeagueRequest = configuration.LeagueRequest
+			};
+
+			// Preparamos clases para hacer calculos
+			IStatistic historical_st = new HistoricalStatistic() 
+			{
+				historics = hm, 
+				Weight = configuration.HistoricWeight 
+			};
+
+
+			IStatistic classification_st = new ClassificationStatistic()
+			{
+				req = ar,
+				Weight = configuration.ClasificationWeight
+			};
+
+			// Recorremos los emparejamientos y hacemos calculos
+			foreach( var a in fr.GetFixtures() )
 			{
 				List<Nomio> formula = new List<Nomio>();
 
-				formula.Add( new Nomio() { Variable = historical_st.GetStatistic( a ), Weight = 0.4f } );
-				formula.Add( new Nomio() { Variable = classification_st.GetStatistic( a ), Weight = 0.6f } );
+				formula.Add( new Nomio() { Variable = historical_st.GetStatistic( a ), Weight = historical_st.Weight } );
+				formula.Add( new Nomio() { Variable = classification_st.GetStatistic( a ), Weight = classification_st.Weight } );
 
 				float solution = formula.Sum( n => n.Variable * n.Weight );
-				Console.WriteLine( $"Solution for {a.teamA} vs {a.teamB} = {solution}" );
 
+				Log.Info($"Solution for {a.HomeTeam} vs {a.AwayTeam} = {solution}" );
 			}
 
             Console.ReadKey();

@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MLQuiniela.Classes
+﻿
+namespace MLQuiniela
 {
 	/// <summary>
 	/// Relaciona dos equipos y su resultado

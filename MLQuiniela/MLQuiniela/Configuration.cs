@@ -8,6 +8,10 @@ namespace MLQuiniela
 	/// </summary>
 	public class Configuration
 	{
+		public float ClasificationWeight { get; set; }
+
+		public float HistoricWeight { get; set; }
+
 		public string QuinielaFixtureURL { get; set; }
 
 		public string RequestHeader { get; set; }

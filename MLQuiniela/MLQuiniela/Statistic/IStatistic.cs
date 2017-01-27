@@ -1,10 +1,10 @@
-﻿using System;
-using MLQuiniela.Classes;
-
+﻿
 namespace MLQuiniela.Statistic
 {
 	public interface IStatistic
 	{
-		float GetStatistic (Empairment empairment);
+		float Weight { get; set; }
+
+		float GetStatistic (Fixture ficture);
 	}
 }
