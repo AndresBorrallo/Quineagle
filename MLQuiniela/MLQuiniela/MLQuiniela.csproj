@@ -88,11 +88,15 @@
     <Compile Include="Nomio.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="Fixture.cs" />
+    <Compile Include="TeamsNames.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
     <None Include="Configuration.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TeamsNames.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

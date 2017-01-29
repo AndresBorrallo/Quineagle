@@ -28,6 +28,10 @@ namespace MLQuiniela
 			Log.Info( "Cargando configuracion" );
 			Configuration configuration = JsonConvert.DeserializeObject<Configuration>( File.ReadAllText( @"./Configuration.json" ) );
 
+			// Cargamos nombres de equipos
+			Log.Info( "Cargando nombres de equipos de 'TeamsNames.json'" );
+			Teams teams = JsonConvert.DeserializeObject<Teams>( File.ReadAllText( @"./TeamsNames.json" ) );
+
 			// Cargamos los emparejamientos
 			Log.Info( "Cargando Emparejamientos" );
 			FixtureRequester fr = new FixtureRequester() 
