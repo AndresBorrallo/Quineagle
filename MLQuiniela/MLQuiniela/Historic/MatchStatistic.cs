@@ -18,5 +18,9 @@ namespace MLQuiniela.Historic
 		public float DrawsPercent { get; set; }
 
 		public float LostPercent { get; set; }
+
+		public int GoalsInFavour { get; set; }
+
+		public int GoalsAgainst { get; set; }
 	}
 }

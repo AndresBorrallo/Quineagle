@@ -5,6 +5,7 @@ using System.Reflection;
 using log4net;
 using MMLib.Extensions;
 using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace MLQuiniela.Clasification
 {
@@ -23,9 +24,10 @@ namespace MLQuiniela.Clasification
 
 		public string API_URL { get; set; }
 
-		private LeagueTable _primeraDivision = null;
+		private Dictionary<LeagueEnum, LeagueTable> _leagues = new Dictionary<LeagueEnum, LeagueTable>();
+		//private LeagueTable _primeraDivision = null;
 
-		private LeagueTable _segundaDivision = null;
+		//private LeagueTable _segundaDivision = null;
 
 
 		public void DownloadLeague( LeagueEnum league )
@@ -53,6 +55,11 @@ namespace MLQuiniela.Clasification
 
 				// convierto los nombres a mayusculas y sin acentos
 				table.standing.Select( a => { a.teamName = a.teamName.RemoveDiacritics().ToUpper(); return a; } ).ToList();
+				// Por cada nombre en la tabla, lo busco en la TeamsNames y lo sustituyo si lo encuentra
+				foreach( var team in table.standing )
+				{
+					team.teamName = Teams.GetKeyfromName( team.teamName );
+				}
 			}
 			catch( Exception e )
 			{
@@ -60,29 +67,16 @@ namespace MLQuiniela.Clasification
 				Log.Warn( e.Message );
 			}
 
-			if( league == LeagueEnum.PRIMERA )
-				_primeraDivision = table;
-			else
-				_segundaDivision = table;
+			_leagues[ league ] = table;
 		}
 
 		public LeagueTable GetLeague( LeagueEnum league )
 		{
 			LeagueTable tabla = null;
 
-			if( league == LeagueEnum.PRIMERA )
+			if( !_leagues.TryGetValue( league, out tabla ) )
 			{
-				if( _primeraDivision == null )
-					DownloadLeague( league );
-
-				tabla = _primeraDivision;
-			}
-			else
-			{
-				if( _segundaDivision == null )
-					DownloadLeague( league );
-
-				tabla = _segundaDivision;
+				Log.Warn( $"No existe la liga {EnumUtility.GetDescriptionFromEnumValue(league)}" );
 			}
 
 			return tabla;

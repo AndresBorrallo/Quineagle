@@ -13,6 +13,7 @@ using MLQuiniela.Fixtures;
 using MLQuiniela.Historic;
 using MLQuiniela.Clasification;
 using log4net.Config;
+using Newtonsoft.Json.Linq;
 
 namespace MLQuiniela
 {
@@ -30,15 +31,19 @@ namespace MLQuiniela
 
 			// Cargamos nombres de equipos
 			Log.Info( "Cargando nombres de equipos de 'TeamsNames.json'" );
-			Teams teams = JsonConvert.DeserializeObject<Teams>( File.ReadAllText( @"./TeamsNames.json" ) );
+			var jObject = JObject.Parse( File.ReadAllText( @"./TeamsNames.json" ) );
+			var jToken = jObject.GetValue( "TeamsNames" );
+			Teams.TeamsNames = ( Dictionary<string, List<string>> )jToken.ToObject( typeof( Dictionary<string, List<string>> ) );
+			Log.Info( $"Se han cargado {Teams.TeamsNames.Values.Sum( x => x.Count ) } nombres de equipos" );
 
 			// Cargamos los emparejamientos
 			Log.Info( "Cargando Emparejamientos" );
-			FixtureRequester fr = new FixtureRequester() 
-			{ 
-				QuinielaFixtureURL = configuration.QuinielaFixtureURL 
+			FixtureRequester fr = new FixtureRequester()
+			{
+				QuinielaFixtureURL = configuration.QuinielaFixtureURL
 			};
 			fr.LoadFixtures();
+			fr.PrintFixtures();
 
 			// Cargamos historicos
 			Log.Info( "Cargando historicos" );
@@ -58,10 +63,10 @@ namespace MLQuiniela
 			ar.DownloadLeague( LeagueEnum.SEGUNDA );
 
 			// Preparamos clases para hacer calculos
-			IStatistic historical_st = new HistoricalStatistic() 
+			IStatistic historical_st = new HistoricalStatistic()
 			{
-				historics = hm, 
-				Weight = configuration.HistoricWeight 
+				historics = hm,
+				Weight = configuration.HistoricWeight
 			};
 
 
@@ -81,10 +86,10 @@ namespace MLQuiniela
 
 				float solution = formula.Sum( n => n.Variable * n.Weight );
 
-				Log.Info($"Solution for {a.HomeTeam} vs {a.AwayTeam} = {solution}" );
+				Log.Info( $"Solution for {a.HomeTeam} vs {a.AwayTeam} = {solution}" );
 			}
 
-            Console.ReadKey();
+			Console.ReadKey();
         }
 
 		private static void InitializeLog4net()

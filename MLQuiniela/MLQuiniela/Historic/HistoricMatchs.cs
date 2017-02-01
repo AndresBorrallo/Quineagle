@@ -52,8 +52,8 @@ namespace MLQuiniela.Historic
 					{
 						Match m = new Match()
 						{
-							HomeTeam = values[ 2 ].RemoveDiacritics().ToUpper(),
-							AwayTeam = values[ 3 ].RemoveDiacritics().ToUpper(),
+							HomeTeam = Teams.GetKeyfromName(values[ 2 ].RemoveDiacritics().ToUpper()),
+							AwayTeam = Teams.GetKeyfromName(values[ 3 ].RemoveDiacritics().ToUpper()),
 							HomeTeamGoal = int.Parse( values[ 4 ] ),
 							AwayTeamGoal = int.Parse( values[ 5 ] )
 						};
@@ -101,6 +101,9 @@ namespace MLQuiniela.Historic
 				ms.WinsPercent = ( float )wins/n_matchs * 100;
 				ms.DrawsPercent = ( float )draws/n_matchs * 100;
 				ms.LostPercent = ( float )losts/n_matchs  * 100;
+
+				ms.GoalsInFavour = matches.Sum( x => x.HomeTeamGoal );
+				ms.GoalsAgainst = matches.Sum( x => x.AwayTeamGoal );
 
 				if( n_matchs < 10 )
 				{
