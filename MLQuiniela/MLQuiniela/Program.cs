@@ -77,6 +77,7 @@ namespace MLQuiniela
 			};
 
 			// Recorremos los emparejamientos y hacemos calculos
+			List<string> Soluciones = new List<string>();
 			foreach( var a in fr.GetFixtures() )
 			{
 				List<Nomio> formula = new List<Nomio>();
@@ -86,8 +87,11 @@ namespace MLQuiniela
 
 				float solution = formula.Sum( n => n.Variable * n.Weight );
 
-				Log.Info( $"Solution for {a.HomeTeam} vs {a.AwayTeam} = {solution}" );
+				Soluciones.Add( $"Solution for {a.HomeTeam} vs {a.AwayTeam} = {solution}" );
 			}
+
+			foreach( var s in Soluciones )
+				Log.Info( s );
 
 			Console.ReadKey();
         }

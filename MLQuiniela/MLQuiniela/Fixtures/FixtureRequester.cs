@@ -92,42 +92,37 @@ namespace MLQuiniela.Fixtures
                     <div class="rM" style="margin-top: 1px !important;"><span class="result-box ">&nbsp;</span></div>
                  </div>
 				*/
-				var hijos = div.ChildNodes;
-				foreach( var h in hijos )
-					if(h.FirstChild.Name == "span")
-						Log.Info( h.FirstChild.Attributes[ 0 ].Value);
-
-				var r0s = div.SelectNodes( "//div[@class='r0']/span" );
-				var r1s = div.SelectNodes( "//div[@class='r1']/span" );
-				var r2s = div.SelectNodes( "//div[@class='r2']/span" );
-				var rms = div.SelectNodes( "//div[@class='rM']/span" );
+				var r0s = div.ChildNodes.Where( a => a.Attributes.Count > 0 && a.Attributes[ 0 ].Value == "r0" ).ToList();
+				var r1s = div.ChildNodes.Where( a => a.Attributes.Count > 0 && a.Attributes[ 0 ].Value == "r1" ).ToList();
+				var r2s = div.ChildNodes.Where( a => a.Attributes.Count > 0 && a.Attributes[ 0 ].Value == "r2" ).ToList();
+				var rMs = div.ChildNodes.Where( a => a.Attributes.Count > 0 && a.Attributes[ 0 ].Value == "rM" ).ToList();
 
 				int local = -1;
 				int visita = -1;
 
 				// tratamos de convertir una apuesta del tipo (0,1,2,M) en (1,x,2)
-				if( r0s[ 0 ].Attributes[ 0 ].Value == "result-box active" )
+				if( r0s[ 0 ].ChildNodes[0].Attributes[ 0 ].Value == "result-box active" )
 					local = 0;
 
-				if( r0s[ 1 ].Attributes[ 0 ].Value == "result-box active" )
+				if( r0s[ 1 ].ChildNodes[ 0 ].Attributes[ 0 ].Value == "result-box active" )
 					visita = 0;
 
-				if( r1s[ 0 ].Attributes[ 0 ].Value == "result-box active" )
+				if( r1s[ 0 ].ChildNodes[ 0 ].Attributes[ 0 ].Value == "result-box active" )
 					local = 1;
 
-				if( r1s[ 1 ].Attributes[ 0 ].Value == "result-box active" )
+				if( r1s[ 1 ].ChildNodes[ 0 ].Attributes[ 0 ].Value == "result-box active" )
 					visita = 1;
 
-				if( r2s[ 0 ].Attributes[ 0 ].Value == "result-box active" )
+				if( r2s[ 0 ].ChildNodes[ 0 ].Attributes[ 0 ].Value == "result-box active" )
 					local = 2;
 
-				if( r2s[ 1 ].Attributes[ 0 ].Value == "result-box active" )
+				if( r2s[ 1 ].ChildNodes[ 0 ].Attributes[ 0 ].Value == "result-box active" )
 					visita = 2;
 
-				if( rms[ 0 ].Attributes[ 0 ].Value == "result-box active" )
+				if( rMs[ 0 ].ChildNodes[ 0 ].Attributes[ 0 ].Value == "result-box active" )
 					local = 3;
 
-				if( rms[ 1 ].Attributes[ 0 ].Value == "result-box active" )
+				if( rMs[ 1 ].ChildNodes[ 0 ].Attributes[ 0 ].Value == "result-box active" )
 					visita = 3;
 
 				QuinielaResult r = QuinielaResult.VOID;
