@@ -62,6 +62,9 @@ namespace MLQuiniela
 			ar.DownloadLeague( LeagueEnum.PRIMERA );
 			ar.DownloadLeague( LeagueEnum.SEGUNDA );
 
+			ar.PrintLeague( LeagueEnum.PRIMERA );
+			ar.PrintLeague( LeagueEnum.SEGUNDA );
+
 			// Preparamos clases para hacer calculos
 			IStatistic historical_st = new HistoricalStatistic()
 			{

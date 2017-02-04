@@ -82,5 +82,21 @@ namespace MLQuiniela.Clasification
 			return tabla;
 		}
 
+		public void PrintLeague( LeagueEnum league )
+		{
+			LeagueTable liga = null;
+
+			if( _leagues.TryGetValue( league, out liga ))
+			{
+				Log.Info( $"Jornada numero {liga.matchday}" );
+				Log.Info( $"POS - NOMBRE - PUNTOS - JUGADOS - GANADOS - PERDIDOS - EMPATADOS - G.FAVOR - G.CONTRA" );
+
+				foreach( var c in liga.standing )
+				{
+					Log.Info( $"{c.position} - {c.teamName} - {c.points} - {c.playedGames} - {c.wins} - {c.losses} - {c.draws} - {c.goals} - {c.goalsAgainst}" );
+				}
+			}
+		}
+
 	}
 }
