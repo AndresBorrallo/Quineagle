@@ -1,2 +1,5 @@
-/bin
-/.vs
+/MLQuiniela/MLQuiniela/bin/*
+/MLQuiniela/MLQuiniela/obj/*
+/MLQuiniela/.vs/*
+
+
