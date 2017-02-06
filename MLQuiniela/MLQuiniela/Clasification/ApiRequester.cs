@@ -6,6 +6,7 @@ using log4net;
 using MMLib.Extensions;
 using Newtonsoft.Json;
 using System.Collections.Generic;
+using System.Text;
 
 namespace MLQuiniela.Clasification
 {
@@ -45,13 +46,13 @@ namespace MLQuiniela.Clasification
 				WebHeaderCollection headers = new WebHeaderCollection();
 				headers.Add( RequestHeader, API_KEY );
 
-				using( WebClient wc = new WebClient() { Headers = headers } )
-				{
-					Log.Debug( $"Request: {request}" );
+                WebClient wc = new WebClient();
+                wc.Encoding = Encoding.UTF8;
+                wc.Headers = headers;
 
-					var json = wc.DownloadString( request );
-					table = JsonConvert.DeserializeObject<LeagueTable>( json );
-				}
+                Log.Debug( $"Request: {request}" );
+            	var json = wc.DownloadString( request );
+				table = JsonConvert.DeserializeObject<LeagueTable>( json );
 
 				// convierto los nombres a mayusculas y sin acentos
 				table.standing.Select( a => { a.teamName = a.teamName.RemoveDiacritics().ToUpper(); return a; } ).ToList();

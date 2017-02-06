@@ -7,6 +7,7 @@ using System.Reflection;
 using System;
 using MMLib;
 using MMLib.Extensions;
+using System.Text;
 
 namespace MLQuiniela.Fixtures
 {
@@ -25,7 +26,9 @@ namespace MLQuiniela.Fixtures
 		{
 			try
 			{
-				var html = new WebClient().DownloadString( QuinielaFixtureURL );
+                WebClient wc = new WebClient();
+                wc.Encoding = Encoding.UTF8;
+				var html = wc.DownloadString( QuinielaFixtureURL );
 				var doc = new HtmlDocument();
 				doc.LoadHtml( html );
 

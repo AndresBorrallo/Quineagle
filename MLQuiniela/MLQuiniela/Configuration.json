@@ -1,13 +1,11 @@
 ﻿{
 	"ClasificationWeight":"0.6",
 	"HistoricWeight":"0.4",
-
-    "QuinielaFixtureURL":"https://www.quinielista.es/ayudas/module_help_other_upcoming.asp?num_jornada=33&num_temporada=2017",
+  "QuinielaFixtureURL":"https://www.quinielista.es/ayudas/module_help_other_upcoming.asp?num_jornada=36&num_temporada=2017",
 	"RequestHeader":"X-Auth-Token",
 	"API_KEY": "e43b609f63f54d40b4e78258014acef2",
 	"LeagueRequest": "competitions/$LEAGUEID$/leagueTable/?matchday=20",
-	"API_URL": "http://api.football-data.org/v1/",
-    
+	"API_URL": "http://api.football-data.org/v1/",    
 	"Csv_URLs" : [
         "http://www.football-data.co.uk/mmz4281/9394/SP1.csv",
         "http://www.football-data.co.uk/mmz4281/9495/SP1.csv",
@@ -42,17 +40,17 @@
         "http://www.football-data.co.uk/mmz4281/0910/SP2.csv",
         "http://www.football-data.co.uk/mmz4281/1011/SP1.csv",
         "http://www.football-data.co.uk/mmz4281/1011/SP2.csv",
-		"http://www.football-data.co.uk/mmz4281/1112/SP1.csv",
+		    "http://www.football-data.co.uk/mmz4281/1112/SP1.csv",
         "http://www.football-data.co.uk/mmz4281/1112/SP2.csv",
-		"http://www.football-data.co.uk/mmz4281/1213/SP1.csv",
+		    "http://www.football-data.co.uk/mmz4281/1213/SP1.csv",
         "http://www.football-data.co.uk/mmz4281/1213/SP2.csv",
-		"http://www.football-data.co.uk/mmz4281/1314/SP1.csv",
+		    "http://www.football-data.co.uk/mmz4281/1314/SP1.csv",
         "http://www.football-data.co.uk/mmz4281/1314/SP2.csv",
-		"http://www.football-data.co.uk/mmz4281/1415/SP1.csv",
+		    "http://www.football-data.co.uk/mmz4281/1415/SP1.csv",
         "http://www.football-data.co.uk/mmz4281/1415/SP2.csv",
-		"http://www.football-data.co.uk/mmz4281/1516/SP1.csv",
+		    "http://www.football-data.co.uk/mmz4281/1516/SP1.csv",
         "http://www.football-data.co.uk/mmz4281/1516/SP2.csv",
-		"http://www.football-data.co.uk/mmz4281/1617/SP1.csv",
+		    "http://www.football-data.co.uk/mmz4281/1617/SP1.csv",
         "http://www.football-data.co.uk/mmz4281/1617/SP2.csv"
     ]
 }
