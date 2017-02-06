@@ -22,5 +22,11 @@ namespace MLQuiniela.Historic
 		public int GoalsInFavour { get; set; }
 
 		public int GoalsAgainst { get; set; }
-	}
+
+        public int NPoints { get; set; }
+
+        public int HomeNPoints { get; set; }
+
+        public int AwayNPoints { get; set; }        
+    }
 }

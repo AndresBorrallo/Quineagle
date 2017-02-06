@@ -91,6 +91,7 @@ namespace MLQuiniela.Historic
 			ms.AwayTeam = AwayTeam;
 			ms.HomeTeam = HomeTeam;
 			ms.NMatchs = n_matchs;
+            ms.NPoints = n_matchs * 3;
 
 			if( n_matchs > 0 )
 			{
@@ -102,7 +103,10 @@ namespace MLQuiniela.Historic
 				ms.DrawsPercent = ( float )draws/n_matchs * 100;
 				ms.LostPercent = ( float )losts/n_matchs  * 100;
 
-				ms.GoalsInFavour = matches.Sum( x => x.HomeTeamGoal );
+                ms.HomeNPoints = wins * 3 + draws;
+                ms.AwayNPoints = losts* 3 + draws;
+
+                ms.GoalsInFavour = matches.Sum( x => x.HomeTeamGoal );
 				ms.GoalsAgainst = matches.Sum( x => x.AwayTeamGoal );
 
 				if( n_matchs < 10 )

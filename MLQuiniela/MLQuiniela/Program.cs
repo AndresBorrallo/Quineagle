@@ -89,8 +89,9 @@ namespace MLQuiniela
 				formula.Add( new Nomio() { Variable = classification_st.GetStatistic( a ), Weight = classification_st.Weight } );
 
 				float solution = formula.Sum( n => n.Variable * n.Weight );
+                char forecast = (solution > 65) ? '1' : ((solution > 40) ? 'X' : '2');
 
-				Soluciones.Add( $"Solution for {a.HomeTeam} vs {a.AwayTeam} = {solution}" );
+				Soluciones.Add( $"Solution for {a.HomeTeam}-{a.AwayTeam}: {forecast} \t\tResult :{solution}%" );
 			}
 
 			foreach( var s in Soluciones )
