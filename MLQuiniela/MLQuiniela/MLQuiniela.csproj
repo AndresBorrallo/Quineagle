@@ -56,57 +56,22 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="HtmlAgilityPack">
-      <HintPath>..\packages\HtmlAgilityPack.1.4.9.5\lib\Net45\HtmlAgilityPack.dll</HintPath>
-    </Reference>
     <Reference Include="log4net">
       <HintPath>..\packages\log4net.2.0.7\lib\net45-full\log4net.dll</HintPath>
     </Reference>
-    <Reference Include="MMLib.Core">
-      <HintPath>..\packages\MMLib.Extensions.1.0.10.13\lib\MMLib.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="MMLib.Extensions">
-      <HintPath>..\packages\MMLib.Extensions.1.0.10.13\lib\MMLib.Extensions.dll</HintPath>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Statistic\IStatistic.cs" />
-    <Compile Include="Statistic\ClassificationStatistic.cs" />
-    <Compile Include="Statistic\HistoricalStatistic.cs" />
-    <Compile Include="Configuration.cs" />
-    <Compile Include="Historic\HistoricMatchs.cs" />
-    <Compile Include="Historic\Match.cs" />
-    <Compile Include="Fixtures\FixtureRequester.cs" />
-    <Compile Include="Clasification\ApiRequester.cs" />
-    <Compile Include="Clasification\LeagueTable.cs" />
-    <Compile Include="Historic\MatchStatistic.cs" />
-    <Compile Include="Nomio.cs" />
-    <Compile Include="Enums.cs" />
-    <Compile Include="Fixture.cs" />
-    <Compile Include="TeamsNames.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-    <None Include="Configuration.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="TeamsNames.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
   <ItemGroup />
-  <ItemGroup>
-    <Folder Include="Statistic\" />
-    <Folder Include="Historic\" />
-    <Folder Include="Fixtures\" />
-    <Folder Include="Clasification\" />
-  </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
       <Visible>False</Visible>
@@ -118,6 +83,12 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\libQuinEagle\libQuinEagle.csproj">
+      <Project>{6ACD799D-1E25-404D-BDE1-88CDD99C2805}</Project>
+      <Name>libQuinEagle</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

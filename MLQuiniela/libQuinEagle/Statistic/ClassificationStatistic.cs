@@ -1,9 +1,9 @@
 ﻿using System.Linq;
 using System.Reflection;
 using log4net;
-using MLQuiniela.Clasification;
+using libQuinEagle.Clasification;
 
-namespace MLQuiniela.Statistic
+namespace libQuinEagle.Statistic
 {
 	public class ClassificationStatistic : IStatistic
 	{

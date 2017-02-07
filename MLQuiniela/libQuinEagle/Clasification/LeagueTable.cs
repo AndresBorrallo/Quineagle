@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace MLQuiniela.Clasification
+namespace libQuinEagle.Clasification
 {
 	public class Self
 	{

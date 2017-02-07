@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace MLQuiniela
+namespace libQuinEagle
 {
 	public static class Teams
 	{

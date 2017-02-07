@@ -8,7 +8,7 @@ using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Text;
 
-namespace MLQuiniela.Clasification
+namespace libQuinEagle.Clasification
 {
 	/// <summary>
 	/// Optiene una clasificacion dada usando la API de football-data.org

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace MLQuiniela
+namespace libQuinEagle
 {
 	/// <summary>
 	/// La configuracion de la Aplicacion, basada en el fichero Configuration.json

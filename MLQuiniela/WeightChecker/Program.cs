@@ -13,14 +13,14 @@ using log4net.Config;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace MLQuiniela
+namespace WeightChecker
 {
-    public class Program
-    {
+	public class MainClass
+	{
 		static public ILog Log { get; } = LogManager.GetLogger( MethodBase.GetCurrentMethod().DeclaringType );
 
-        static void Main(string[] args)
-        {
+		public static void Main( string[] args )
+		{
 			InitializeLog4net();
 
 			// Cargamos la configuracion
@@ -77,26 +77,9 @@ namespace MLQuiniela
 				Weight = configuration.ClasificationWeight
 			};
 
-			// Recorremos los emparejamientos y hacemos calculos
-			List<string> Soluciones = new List<string>();
-			foreach( var a in fr.GetFixtures() )
-			{
-				List<Nomio> formula = new List<Nomio>();
-
-				formula.Add( new Nomio() { Variable = historical_st.GetStatistic( a ), Weight = historical_st.Weight } );
-				formula.Add( new Nomio() { Variable = classification_st.GetStatistic( a ), Weight = classification_st.Weight } );
-
-				float solution = formula.Sum( n => n.Variable * n.Weight );
-                char forecast = (solution >= 60) ? '1' : ((solution >= 40) ? 'X' : '2');
-
-				Soluciones.Add( $"Solution for {a.HomeTeam}-{a.AwayTeam}: {forecast} \t\tResult :{solution}%" );
-			}
-
-			foreach( var s in Soluciones )
-				Log.Info( s );
-
-			Console.ReadKey();
-        }
+			// Aqui esta todo cargado para empezar a iterar
+			// JAIMEEE!!!! aqui es donde funcionas bien
+		}
 
 		private static void InitializeLog4net()
 		{
@@ -107,5 +90,5 @@ namespace MLQuiniela
 			Log.Info( AppPath + ", " + Environment.CurrentDirectory );
 			Log.Info( "Initializating application" );
 		}
-    }
+	}
 }

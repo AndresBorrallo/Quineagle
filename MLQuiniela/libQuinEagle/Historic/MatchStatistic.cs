@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MLQuiniela.Historic
+namespace libQuinEagle.Historic
 {
 	/// <summary>
 	/// Estadisticas historicas par dos equipos

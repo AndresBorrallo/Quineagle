@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace MLQuiniela
+﻿namespace libQuinEagle
 {
 	/// <summary>
 	/// Un nomio de una formula dada

@@ -1,5 +1,5 @@
 ﻿
-namespace MLQuiniela.Statistic
+namespace libQuinEagle.Statistic
 {
 	public interface IStatistic
 	{

@@ -5,11 +5,11 @@ using HtmlAgilityPack;
 using log4net;
 using System.Reflection;
 using System;
-using MMLib;
+//using MMLib;
 using MMLib.Extensions;
 using System.Text;
 
-namespace MLQuiniela.Fixtures
+namespace libQuinEagle.Fixtures
 {
 	/// <summary>
 	/// Obtiene los emparejamientos de la quiniela usando webscraping de quinielistas.com

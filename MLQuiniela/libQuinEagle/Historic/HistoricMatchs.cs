@@ -7,7 +7,7 @@ using System.Reflection;
 using log4net;
 using MMLib.Extensions;
 
-namespace MLQuiniela.Historic
+namespace libQuinEagle.Historic
 {
 	/// <summary>
 	/// Carga historicos a partir de una lista de urls

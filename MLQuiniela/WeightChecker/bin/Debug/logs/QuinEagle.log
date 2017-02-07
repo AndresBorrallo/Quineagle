@@ -1,0 +1,120 @@
+﻿2017-02-07 17:02:04,707 [1] INFO  [WeightChecker.MainClass.InitializeLog4net] - /Users/jesus/Projects/Quineagle/MLQuiniela/WeightChecker/bin/Debug/, /Users/jesus/Projects/Quineagle/MLQuiniela/WeightChecker/bin/Debug
+2017-02-07 17:02:04,768 [1] INFO  [WeightChecker.MainClass.InitializeLog4net] - Initializating application
+2017-02-07 17:02:04,768 [1] INFO  [WeightChecker.MainClass.Main] - Cargando configuracion
+2017-02-07 17:02:04,985 [1] INFO  [WeightChecker.MainClass.Main] - Cargando nombres de equipos de 'TeamsNames.json'
+2017-02-07 17:02:05,018 [1] INFO  [WeightChecker.MainClass.Main] - Se han cargado 156 nombres de equipos
+2017-02-07 17:02:05,019 [1] INFO  [WeightChecker.MainClass.Main] - Cargando Emparejamientos
+2017-02-07 17:02:05,792 [1] INFO  [libQuinEagle.Fixtures.FixtureRequester.PrintFixtures] - Casa	Fuera	Resultado
+2017-02-07 17:02:05,795 [1] INFO  [libQuinEagle.Fixtures.FixtureRequester.PrintFixtures] - ALAVES - BARCELONA	Vacio
+2017-02-07 17:02:05,796 [1] INFO  [libQuinEagle.Fixtures.FixtureRequester.PrintFixtures] - ATHLETIC - DEPORTIVO	Vacio
+2017-02-07 17:02:05,796 [1] INFO  [libQuinEagle.Fixtures.FixtureRequester.PrintFixtures] - OSASUNA - R.MADRID	Vacio
+2017-02-07 17:02:05,796 [1] INFO  [libQuinEagle.Fixtures.FixtureRequester.PrintFixtures] - VILLAREAL - MALAGA	Vacio
+2017-02-07 17:02:05,797 [1] INFO  [libQuinEagle.Fixtures.FixtureRequester.PrintFixtures] - LEGANES - GIJON	Vacio
+2017-02-07 17:02:05,797 [1] INFO  [libQuinEagle.Fixtures.FixtureRequester.PrintFixtures] - LAS PALMAS - SEVILLA	Vacio
+2017-02-07 17:02:05,797 [1] INFO  [libQuinEagle.Fixtures.FixtureRequester.PrintFixtures] - AT.MADRID - CELTA	Vacio
+2017-02-07 17:02:05,798 [1] INFO  [libQuinEagle.Fixtures.FixtureRequester.PrintFixtures] - ZARAGOZA - LEVANTE	Vacio
+2017-02-07 17:02:05,798 [1] INFO  [libQuinEagle.Fixtures.FixtureRequester.PrintFixtures] - GETAFE - CADIZ	Vacio
+2017-02-07 17:02:05,799 [1] INFO  [libQuinEagle.Fixtures.FixtureRequester.PrintFixtures] - CORDOBA - HUESCA	Vacio
+2017-02-07 17:02:05,799 [1] INFO  [libQuinEagle.Fixtures.FixtureRequester.PrintFixtures] - VALLADOLID - TENERIFE	Vacio
+2017-02-07 17:02:05,799 [1] INFO  [libQuinEagle.Fixtures.FixtureRequester.PrintFixtures] - ELCHE - MURCIA	Vacio
+2017-02-07 17:02:05,800 [1] INFO  [libQuinEagle.Fixtures.FixtureRequester.PrintFixtures] - MIRANDES - OVIEDO	Vacio
+2017-02-07 17:02:05,800 [1] INFO  [libQuinEagle.Fixtures.FixtureRequester.PrintFixtures] - MALLORCA - RAYO	Vacio
+2017-02-07 17:02:05,800 [1] INFO  [libQuinEagle.Fixtures.FixtureRequester.PrintFixtures] - EIBAR - GRANADA	Vacio
+2017-02-07 17:02:05,801 [1] INFO  [WeightChecker.MainClass.Main] - Cargando historicos
+2017-02-07 17:02:05,802 [1] DEBUG [libQuinEagle.Historic.HistoricMatchs.LoadHistoric] - Descargando csv de http://www.football-data.co.uk/mmz4281/9394/SP1.csv
+2017-02-07 17:02:05,966 [1] DEBUG [libQuinEagle.Historic.HistoricMatchs.LoadHistoric] - Descargando csv de http://www.football-data.co.uk/mmz4281/9495/SP1.csv
+2017-02-07 17:02:06,038 [1] DEBUG [libQuinEagle.Historic.HistoricMatchs.LoadHistoric] - Descargando csv de http://www.football-data.co.uk/mmz4281/9596/SP1.csv
+2017-02-07 17:02:06,108 [1] DEBUG [libQuinEagle.Historic.HistoricMatchs.LoadHistoric] - Descargando csv de http://www.football-data.co.uk/mmz4281/9697/SP1.csv
+2017-02-07 17:02:06,303 [1] DEBUG [libQuinEagle.Historic.HistoricMatchs.LoadHistoric] - Descargando csv de http://www.football-data.co.uk/mmz4281/9697/SP2.csv
+2017-02-07 17:02:06,374 [1] DEBUG [libQuinEagle.Historic.HistoricMatchs.LoadHistoric] - Descargando csv de http://www.football-data.co.uk/mmz4281/9798/SP1.csv
+2017-02-07 17:02:06,469 [1] DEBUG [libQuinEagle.Historic.HistoricMatchs.LoadHistoric] - Descargando csv de http://www.football-data.co.uk/mmz4281/9798/SP2.csv
+2017-02-07 17:02:06,537 [1] DEBUG [libQuinEagle.Historic.HistoricMatchs.LoadHistoric] - Descargando csv de http://www.football-data.co.uk/mmz4281/9899/SP1.csv
+2017-02-07 17:02:06,736 [1] DEBUG [libQuinEagle.Historic.HistoricMatchs.LoadHistoric] - Descargando csv de http://www.football-data.co.uk/mmz4281/9899/SP2.csv
+2017-02-07 17:02:06,938 [1] DEBUG [libQuinEagle.Historic.HistoricMatchs.LoadHistoric] - Descargando csv de http://www.football-data.co.uk/mmz4281/9900/SP1.csv
+2017-02-07 17:02:07,002 [1] DEBUG [libQuinEagle.Historic.HistoricMatchs.LoadHistoric] - Descargando csv de http://www.football-data.co.uk/mmz4281/9900/SP2.csv
+2017-02-07 17:02:07,106 [1] DEBUG [libQuinEagle.Historic.HistoricMatchs.LoadHistoric] - Descargando csv de http://www.football-data.co.uk/mmz4281/0001/SP1.csv
+2017-02-07 17:02:07,209 [1] DEBUG [libQuinEagle.Historic.HistoricMatchs.LoadHistoric] - Descargando csv de http://www.football-data.co.uk/mmz4281/0001/SP2.csv
+2017-02-07 17:02:07,305 [1] DEBUG [libQuinEagle.Historic.HistoricMatchs.LoadHistoric] - Descargando csv de http://www.football-data.co.uk/mmz4281/0102/SP1.csv
+2017-02-07 17:02:07,376 [1] DEBUG [libQuinEagle.Historic.HistoricMatchs.LoadHistoric] - Descargando csv de http://www.football-data.co.uk/mmz4281/0102/SP2.csv
+2017-02-07 17:02:07,579 [1] DEBUG [libQuinEagle.Historic.HistoricMatchs.LoadHistoric] - Descargando csv de http://www.football-data.co.uk/mmz4281/0203/SP1.csv
+2017-02-07 17:02:07,655 [1] DEBUG [libQuinEagle.Historic.HistoricMatchs.LoadHistoric] - Descargando csv de http://www.football-data.co.uk/mmz4281/0203/SP2.csv
+2017-02-07 17:02:07,792 [1] DEBUG [libQuinEagle.Historic.HistoricMatchs.LoadHistoric] - Descargando csv de http://www.football-data.co.uk/mmz4281/0304/SP1.csv
+2017-02-07 17:02:07,914 [1] DEBUG [libQuinEagle.Historic.HistoricMatchs.LoadHistoric] - Descargando csv de http://www.football-data.co.uk/mmz4281/0304/SP2.csv
+2017-02-07 17:02:07,997 [1] DEBUG [libQuinEagle.Historic.HistoricMatchs.LoadHistoric] - Descargando csv de http://www.football-data.co.uk/mmz4281/0405/SP1.csv
+2017-02-07 17:02:08,247 [1] DEBUG [libQuinEagle.Historic.HistoricMatchs.LoadHistoric] - Descargando csv de http://www.football-data.co.uk/mmz4281/0405/SP2.csv
+2017-02-07 17:02:08,370 [1] DEBUG [libQuinEagle.Historic.HistoricMatchs.LoadHistoric] - Descargando csv de http://www.football-data.co.uk/mmz4281/0506/SP1.csv
+2017-02-07 17:02:08,504 [1] DEBUG [libQuinEagle.Historic.HistoricMatchs.LoadHistoric] - Descargando csv de http://www.football-data.co.uk/mmz4281/0506/SP2.csv
+2017-02-07 17:02:08,728 [1] DEBUG [libQuinEagle.Historic.HistoricMatchs.LoadHistoric] - Descargando csv de http://www.football-data.co.uk/mmz4281/0607/SP1.csv
+2017-02-07 17:02:08,898 [1] DEBUG [libQuinEagle.Historic.HistoricMatchs.LoadHistoric] - Descargando csv de http://www.football-data.co.uk/mmz4281/0607/SP2.csv
+2017-02-07 17:02:09,099 [1] DEBUG [libQuinEagle.Historic.HistoricMatchs.LoadHistoric] - Descargando csv de http://www.football-data.co.uk/mmz4281/0708/SP1.csv
+2017-02-07 17:02:09,221 [1] DEBUG [libQuinEagle.Historic.HistoricMatchs.LoadHistoric] - Descargando csv de http://www.football-data.co.uk/mmz4281/0708/SP2.csv
+2017-02-07 17:02:09,350 [1] DEBUG [libQuinEagle.Historic.HistoricMatchs.LoadHistoric] - Descargando csv de http://www.football-data.co.uk/mmz4281/0809/SP1.csv
+2017-02-07 17:02:09,438 [1] DEBUG [libQuinEagle.Historic.HistoricMatchs.LoadHistoric] - Descargando csv de http://www.football-data.co.uk/mmz4281/0809/SP2.csv
+2017-02-07 17:02:09,682 [1] DEBUG [libQuinEagle.Historic.HistoricMatchs.LoadHistoric] - Descargando csv de http://www.football-data.co.uk/mmz4281/0910/SP1.csv
+2017-02-07 17:02:09,773 [1] DEBUG [libQuinEagle.Historic.HistoricMatchs.LoadHistoric] - Descargando csv de http://www.football-data.co.uk/mmz4281/0910/SP2.csv
+2017-02-07 17:02:09,860 [1] DEBUG [libQuinEagle.Historic.HistoricMatchs.LoadHistoric] - Descargando csv de http://www.football-data.co.uk/mmz4281/1011/SP1.csv
+2017-02-07 17:02:09,951 [1] DEBUG [libQuinEagle.Historic.HistoricMatchs.LoadHistoric] - Descargando csv de http://www.football-data.co.uk/mmz4281/1011/SP2.csv
+2017-02-07 17:02:10,066 [1] DEBUG [libQuinEagle.Historic.HistoricMatchs.LoadHistoric] - Descargando csv de http://www.football-data.co.uk/mmz4281/1112/SP1.csv
+2017-02-07 17:02:10,156 [1] DEBUG [libQuinEagle.Historic.HistoricMatchs.LoadHistoric] - Descargando csv de http://www.football-data.co.uk/mmz4281/1112/SP2.csv
+2017-02-07 17:02:10,263 [1] DEBUG [libQuinEagle.Historic.HistoricMatchs.LoadHistoric] - Descargando csv de http://www.football-data.co.uk/mmz4281/1213/SP1.csv
+2017-02-07 17:02:10,462 [1] DEBUG [libQuinEagle.Historic.HistoricMatchs.LoadHistoric] - Descargando csv de http://www.football-data.co.uk/mmz4281/1213/SP2.csv
+2017-02-07 17:02:10,588 [1] DEBUG [libQuinEagle.Historic.HistoricMatchs.LoadHistoric] - Descargando csv de http://www.football-data.co.uk/mmz4281/1314/SP1.csv
+2017-02-07 17:02:10,672 [1] DEBUG [libQuinEagle.Historic.HistoricMatchs.LoadHistoric] - Descargando csv de http://www.football-data.co.uk/mmz4281/1314/SP2.csv
+2017-02-07 17:02:10,767 [1] DEBUG [libQuinEagle.Historic.HistoricMatchs.LoadHistoric] - Descargando csv de http://www.football-data.co.uk/mmz4281/1415/SP1.csv
+2017-02-07 17:02:10,874 [1] DEBUG [libQuinEagle.Historic.HistoricMatchs.LoadHistoric] - Descargando csv de http://www.football-data.co.uk/mmz4281/1415/SP2.csv
+2017-02-07 17:02:11,374 [1] DEBUG [libQuinEagle.Historic.HistoricMatchs.LoadHistoric] - Descargando csv de http://www.football-data.co.uk/mmz4281/1516/SP1.csv
+2017-02-07 17:02:11,463 [1] DEBUG [libQuinEagle.Historic.HistoricMatchs.LoadHistoric] - Descargando csv de http://www.football-data.co.uk/mmz4281/1516/SP2.csv
+2017-02-07 17:02:11,766 [1] DEBUG [libQuinEagle.Historic.HistoricMatchs.LoadHistoric] - Descargando csv de http://www.football-data.co.uk/mmz4281/1617/SP1.csv
+2017-02-07 17:02:11,832 [1] DEBUG [libQuinEagle.Historic.HistoricMatchs.LoadHistoric] - Descargando csv de http://www.football-data.co.uk/mmz4281/1617/SP2.csv
+2017-02-07 17:02:12,039 [1] INFO  [libQuinEagle.Historic.HistoricMatchs.LoadHistoric] - Historical Loaded with 18533 matchs
+2017-02-07 17:02:12,039 [1] INFO  [WeightChecker.MainClass.Main] - Cargando clasificacion
+2017-02-07 17:02:12,043 [1] DEBUG [libQuinEagle.Clasification.ApiRequester.DownloadLeague] - Solicitando datos de la liga Primera
+2017-02-07 17:02:12,044 [1] DEBUG [libQuinEagle.Clasification.ApiRequester.DownloadLeague] - Request: http://api.football-data.org/v1/competitions/436/leagueTable/?matchday=22
+2017-02-07 17:02:12,229 [1] DEBUG [libQuinEagle.Clasification.ApiRequester.DownloadLeague] - Solicitando datos de la liga Segunda
+2017-02-07 17:02:12,230 [1] DEBUG [libQuinEagle.Clasification.ApiRequester.DownloadLeague] - Request: http://api.football-data.org/v1/competitions/437/leagueTable/?matchday=22
+2017-02-07 17:02:12,329 [1] INFO  [libQuinEagle.Clasification.ApiRequester.PrintLeague] - Jornada numero 22
+2017-02-07 17:02:12,330 [1] INFO  [libQuinEagle.Clasification.ApiRequester.PrintLeague] - POS - NOMBRE - PUNTOS - JUGADOS - GANADOS - PERDIDOS - EMPATADOS - G.FAVOR - G.CONTRA
+2017-02-07 17:02:12,331 [1] INFO  [libQuinEagle.Clasification.ApiRequester.PrintLeague] - 1 - R.MADRID - 46 - 19 - 14 - 1 - 4 - 51 - 17
+2017-02-07 17:02:12,331 [1] INFO  [libQuinEagle.Clasification.ApiRequester.PrintLeague] - 2 - BARCELONA - 45 - 21 - 13 - 2 - 6 - 55 - 18
+2017-02-07 17:02:12,332 [1] INFO  [libQuinEagle.Clasification.ApiRequester.PrintLeague] - 3 - SEVILLA - 43 - 21 - 13 - 4 - 4 - 43 - 28
+2017-02-07 17:02:12,332 [1] INFO  [libQuinEagle.Clasification.ApiRequester.PrintLeague] - 4 - AT.MADRID - 39 - 21 - 11 - 4 - 6 - 36 - 16
+2017-02-07 17:02:12,333 [1] INFO  [libQuinEagle.Clasification.ApiRequester.PrintLeague] - 5 - R.SOCIEDAD - 38 - 21 - 12 - 7 - 2 - 34 - 30
+2017-02-07 17:02:12,333 [1] INFO  [libQuinEagle.Clasification.ApiRequester.PrintLeague] - 6 - VILLAREAL - 35 - 21 - 9 - 4 - 8 - 28 - 14
+2017-02-07 17:02:12,334 [1] INFO  [libQuinEagle.Clasification.ApiRequester.PrintLeague] - 7 - EIBAR - 32 - 21 - 9 - 7 - 5 - 32 - 29
+2017-02-07 17:02:12,334 [1] INFO  [libQuinEagle.Clasification.ApiRequester.PrintLeague] - 8 - ESPANYON - 32 - 21 - 8 - 5 - 8 - 29 - 27
+2017-02-07 17:02:12,334 [1] INFO  [libQuinEagle.Clasification.ApiRequester.PrintLeague] - 9 - ATHLETIC - 32 - 21 - 9 - 7 - 5 - 26 - 25
+2017-02-07 17:02:12,335 [1] INFO  [libQuinEagle.Clasification.ApiRequester.PrintLeague] - 10 - CELTA - 30 - 20 - 9 - 8 - 3 - 31 - 33
+2017-02-07 17:02:12,335 [1] INFO  [libQuinEagle.Clasification.ApiRequester.PrintLeague] - 11 - LAS PALMAS - 28 - 21 - 7 - 7 - 7 - 31 - 32
+2017-02-07 17:02:12,336 [1] INFO  [libQuinEagle.Clasification.ApiRequester.PrintLeague] - 12 - ALAVES - 27 - 21 - 6 - 6 - 9 - 21 - 22
+2017-02-07 17:02:12,336 [1] INFO  [libQuinEagle.Clasification.ApiRequester.PrintLeague] - 13 - BETIS - 23 - 20 - 6 - 9 - 5 - 21 - 31
+2017-02-07 17:02:12,336 [1] INFO  [libQuinEagle.Clasification.ApiRequester.PrintLeague] - 14 - MALAGA - 22 - 21 - 5 - 9 - 7 - 28 - 35
+2017-02-07 17:02:12,337 [1] INFO  [libQuinEagle.Clasification.ApiRequester.PrintLeague] - 15 - DEPORTIVO - 19 - 20 - 4 - 9 - 7 - 25 - 32
+2017-02-07 17:02:12,337 [1] INFO  [libQuinEagle.Clasification.ApiRequester.PrintLeague] - 16 - VALENCIA - 19 - 20 - 5 - 11 - 4 - 29 - 40
+2017-02-07 17:02:12,337 [1] INFO  [libQuinEagle.Clasification.ApiRequester.PrintLeague] - 17 - LEGANES - 18 - 21 - 4 - 11 - 6 - 15 - 35
+2017-02-07 17:02:12,338 [1] INFO  [libQuinEagle.Clasification.ApiRequester.PrintLeague] - 18 - GIJON - 13 - 21 - 3 - 14 - 4 - 22 - 43
+2017-02-07 17:02:12,338 [1] INFO  [libQuinEagle.Clasification.ApiRequester.PrintLeague] - 19 - GRANADA - 13 - 21 - 2 - 12 - 7 - 17 - 44
+2017-02-07 17:02:12,338 [1] INFO  [libQuinEagle.Clasification.ApiRequester.PrintLeague] - 20 - OSASUNA - 10 - 21 - 1 - 13 - 7 - 23 - 46
+2017-02-07 17:02:12,339 [1] INFO  [libQuinEagle.Clasification.ApiRequester.PrintLeague] - Jornada numero 22
+2017-02-07 17:02:12,339 [1] INFO  [libQuinEagle.Clasification.ApiRequester.PrintLeague] - POS - NOMBRE - PUNTOS - JUGADOS - GANADOS - PERDIDOS - EMPATADOS - G.FAVOR - G.CONTRA
+2017-02-07 17:02:12,339 [1] INFO  [libQuinEagle.Clasification.ApiRequester.PrintLeague] - 1 - LEVANTE - 49 - 22 - 15 - 3 - 4 - 31 - 14
+2017-02-07 17:02:12,340 [1] INFO  [libQuinEagle.Clasification.ApiRequester.PrintLeague] - 2 - GIRONA - 42 - 22 - 12 - 4 - 6 - 37 - 20
+2017-02-07 17:02:12,340 [1] INFO  [libQuinEagle.Clasification.ApiRequester.PrintLeague] - 3 - CADIZ - 36 - 22 - 10 - 6 - 6 - 31 - 21
+2017-02-07 17:02:12,340 [1] INFO  [libQuinEagle.Clasification.ApiRequester.PrintLeague] - 4 - GETAFE - 36 - 22 - 9 - 4 - 9 - 24 - 19
+2017-02-07 17:02:12,341 [1] INFO  [libQuinEagle.Clasification.ApiRequester.PrintLeague] - 5 - TENERIFE - 33 - 22 - 8 - 5 - 9 - 24 - 20
+2017-02-07 17:02:12,341 [1] INFO  [libQuinEagle.Clasification.ApiRequester.PrintLeague] - 6 - OVIEDO - 32 - 22 - 9 - 8 - 5 - 25 - 26
+2017-02-07 17:02:12,341 [1] INFO  [libQuinEagle.Clasification.ApiRequester.PrintLeague] - 7 - VALLADOLID - 31 - 22 - 9 - 9 - 4 - 25 - 19
+2017-02-07 17:02:12,342 [1] INFO  [libQuinEagle.Clasification.ApiRequester.PrintLeague] - 8 - LUGO - 31 - 22 - 8 - 7 - 7 - 32 - 29
+2017-02-07 17:02:12,342 [1] INFO  [libQuinEagle.Clasification.ApiRequester.PrintLeague] - 9 - REUS - 31 - 22 - 8 - 7 - 7 - 19 - 17
+2017-02-07 17:02:12,342 [1] INFO  [libQuinEagle.Clasification.ApiRequester.PrintLeague] - 10 - SEVILLA B - 31 - 22 - 8 - 7 - 7 - 27 - 28
+2017-02-07 17:02:12,343 [1] INFO  [libQuinEagle.Clasification.ApiRequester.PrintLeague] - 11 - HUESCA - 28 - 22 - 7 - 8 - 7 - 28 - 25
+2017-02-07 17:02:12,343 [1] INFO  [libQuinEagle.Clasification.ApiRequester.PrintLeague] - 12 - ELCHE - 27 - 22 - 7 - 9 - 6 - 31 - 32
+2017-02-07 17:02:12,343 [1] INFO  [libQuinEagle.Clasification.ApiRequester.PrintLeague] - 13 - NUMANCIA - 27 - 22 - 6 - 7 - 9 - 27 - 28
+2017-02-07 17:02:12,344 [1] INFO  [libQuinEagle.Clasification.ApiRequester.PrintLeague] - 14 - ZARAGOZA - 27 - 22 - 7 - 9 - 6 - 27 - 31
+2017-02-07 17:02:12,344 [1] INFO  [libQuinEagle.Clasification.ApiRequester.PrintLeague] - 15 - ALCORCON - 26 - 22 - 7 - 10 - 5 - 15 - 22
+2017-02-07 17:02:12,345 [1] INFO  [libQuinEagle.Clasification.ApiRequester.PrintLeague] - 16 - CORDOBA - 26 - 22 - 6 - 8 - 8 - 21 - 30
+2017-02-07 17:02:12,345 [1] INFO  [libQuinEagle.Clasification.ApiRequester.PrintLeague] - 17 - RAYO - 25 - 22 - 6 - 9 - 7 - 23 - 25
+2017-02-07 17:02:12,345 [1] INFO  [libQuinEagle.Clasification.ApiRequester.PrintLeague] - 18 - MALLORCA - 24 - 22 - 5 - 8 - 9 - 22 - 25
+2017-02-07 17:02:12,346 [1] INFO  [libQuinEagle.Clasification.ApiRequester.PrintLeague] - 19 - MURCIA - 23 - 22 - 5 - 9 - 8 - 23 - 30
+2017-02-07 17:02:12,346 [1] INFO  [libQuinEagle.Clasification.ApiRequester.PrintLeague] - 20 - MIRANDES - 23 - 22 - 5 - 9 - 8 - 20 - 36
+2017-02-07 17:02:12,346 [1] INFO  [libQuinEagle.Clasification.ApiRequester.PrintLeague] - 21 - ALMERIA - 21 - 22 - 5 - 11 - 6 - 21 - 27
+2017-02-07 17:02:12,347 [1] INFO  [libQuinEagle.Clasification.ApiRequester.PrintLeague] - 22 - GIMNASTIC - 21 - 22 - 4 - 9 - 9 - 22 - 31

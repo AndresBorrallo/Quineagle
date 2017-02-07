@@ -1,7 +1,7 @@
 ﻿using System;
-using MLQuiniela.Historic;
+using libQuinEagle.Historic;
 
-namespace MLQuiniela.Statistic
+namespace libQuinEagle.Statistic
 {
 	public class HistoricalStatistic : IStatistic
 	{

@@ -1,5 +1,5 @@
 ﻿
-namespace MLQuiniela.Historic
+namespace libQuinEagle.Historic
 {
 	/// <summary>
 	/// Un Partido dado y los goles de uno y otro equipo

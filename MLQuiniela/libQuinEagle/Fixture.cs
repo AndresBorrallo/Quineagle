@@ -1,5 +1,5 @@
 ﻿
-namespace MLQuiniela
+namespace libQuinEagle
 {
 	/// <summary>
 	/// Relaciona dos equipos y su resultado
