@@ -12,7 +12,7 @@ namespace prueba_scraping
 
 			Scrap scrap = new Scrap();
 
-			IEnumerable<Clasificacion>clasificacion = scrap.GetMatches( "2016_17", 10);
+			IEnumerable<Clasificacion>clasificacion = scrap.GetMatches( "2016_17", 16);
 
 			/*
 			td class="posicion ascenso">3</td>
