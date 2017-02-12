@@ -104,15 +104,10 @@ namespace libQuinEagle.Historic
 				ms.LostPercent = ( float )losts/n_matchs  * 100;
 
                 ms.HomeNPoints = wins * 3 + draws;
-                ms.AwayNPoints = losts* 3 + draws;
+                ms.AwayNPoints = losts * 3 + draws;
 
                 ms.GoalsInFavour = matches.Sum( x => x.HomeTeamGoal );
 				ms.GoalsAgainst = matches.Sum( x => x.AwayTeamGoal );
-
-				if( n_matchs < 10 )
-				{
-					Log.Warn( $"OJO CUIDADO! solo hay {n_matchs} partidos de {HomeTeam} vs {AwayTeam} para hacer estadisticas" );
-				}
 			}
 			else
 			{
