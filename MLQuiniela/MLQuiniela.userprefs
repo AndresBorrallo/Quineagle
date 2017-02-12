@@ -1,10 +1,11 @@
-﻿<Properties StartupConfiguration="{E1E23F1C-3C6D-4E8C-BA26-F4715904F7CB}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="WeightChecker/app.config">
+﻿<Properties StartupConfiguration="{93142EB1-5542-45C8-851A-1AEC1ABFCCDC}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="libQuinEagle/Statistic/ClassificationStatistic.cs">
     <Files>
-      <File FileName="MLQuiniela/Program.cs" Line="26" Column="1" />
-      <File FileName="WeightChecker/Program.cs" Line="81" Column="47" />
-      <File FileName="WeightChecker/app.config" Line="49" Column="17" />
-      <File FileName="MLQuiniela/App.config" Line="9" Column="31" />
+      <File FileName="MLQuiniela/Program.cs" Line="90" Column="72" />
+      <File FileName="libQuinEagle/Configuration.json" Line="8" Column="59" />
+      <File FileName="libQuinEagle/Clasification/LeagueTable.cs" Line="1" Column="1" />
+      <File FileName="libQuinEagle/Clasification/ApiRequester.cs" Line="94" Column="5" />
+      <File FileName="libQuinEagle/Statistic/ClassificationStatistic.cs" Line="34" Column="4" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />

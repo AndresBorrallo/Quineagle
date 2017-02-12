@@ -1,10 +1,11 @@
 ﻿{
-	"ClasificationWeight":"0.60",
-	"HistoricWeight":"0.40",
+	"ClasificationWeight":"0.70",
+	"HistoricWeight":"0.30",
   "QuinielaFixtureURL":"https://www.quinielista.es/ayudas/module_help_other_upcoming.asp?num_jornada=36&num_temporada=2017",
 	"RequestHeader":"X-Auth-Token",
 	"API_KEY": "e43b609f63f54d40b4e78258014acef2",
-	"LeagueRequest": "competitions/$LEAGUEID$/leagueTable/?matchday=22",
+	/*"LeagueRequest": "competitions/$LEAGUEID$/leagueTable/?matchday=22",*/
+    "LeagueRequest": "competitions/$LEAGUEID$/leagueTable/",
 	"API_URL": "http://api.football-data.org/v1/",    
 	"Csv_URLs" : [
         "http://www.football-data.co.uk/mmz4281/9394/SP1.csv",

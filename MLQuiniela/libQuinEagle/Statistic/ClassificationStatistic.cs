@@ -32,7 +32,7 @@ namespace libQuinEagle.Statistic
 
 			LeagueTable tabla = req.GetLeague( liga );
 
-			int puntos_posibles = tabla.matchday * 3;
+			int puntos_posibles = (tabla.matchday - 1) * 3;
 
 			var home_team = tabla.standing.Where( a => a.teamName == fixture.HomeTeam ).FirstOrDefault();
 			var away_team = tabla.standing.Where( a => a.teamName == fixture.AwayTeam ).FirstOrDefault();
@@ -44,8 +44,8 @@ namespace libQuinEagle.Statistic
 
 				float diferencia = pos_homeTeam - pos_awayTeam;
 
-				Log.Debug( $"Posicion de {home_team.teamName} = {pos_homeTeam}" );
-				Log.Debug( $"Posicion de {away_team.teamName} = {pos_awayTeam}" );
+				Log.Debug( $"Posicion de {home_team.teamName} = {pos_homeTeam} || {home_team.points} / {puntos_posibles}" );
+				Log.Debug( $"Posicion de {away_team.teamName} = {pos_awayTeam} || {away_team.points} / {puntos_posibles}" );
 
 				res = ( diferencia + 100 ) / 2;
 
