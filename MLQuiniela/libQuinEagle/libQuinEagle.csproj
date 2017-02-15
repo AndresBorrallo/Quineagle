@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -62,15 +62,10 @@
     <Compile Include="Nomio.cs" />
     <Compile Include="TeamsNames.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Clasification\" />
-    <Folder Include="Fixtures\" />
-    <Folder Include="Historic\" />
-    <Folder Include="Statistic\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="Configuration.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="TeamsNames.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

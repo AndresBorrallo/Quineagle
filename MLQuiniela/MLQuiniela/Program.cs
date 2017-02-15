@@ -84,7 +84,7 @@ namespace MLQuiniela
 				List<Nomio> formula = new List<Nomio>();
 
 				formula.Add( new Nomio() { Variable = historical_st.GetStatistic( a ), Weight = historical_st.Weight } );
-				formula.Add( new Nomio() { Variable = classification_st.GetStatistic( a ), Weight = classification_st.Weight } );
+				formula.Add( new Nomio() { Variable = classification_st.GetStatistic( a ), Weight = historical_st.GetStatistic(a) == 0f ? 1f : classification_st.Weight } );
 
 				float solution = formula.Sum( n => n.Variable * n.Weight );
                 char forecast = (solution >= 55) ? '1' : ((solution >= 43) ? 'X' : '2');

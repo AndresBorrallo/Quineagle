@@ -1,7 +1,7 @@
 ﻿{
-	"ClasificationWeight":"0.70",
-	"HistoricWeight":"0.30",
-  "QuinielaFixtureURL":"https://www.quinielista.es/ayudas/module_help_other_upcoming.asp?num_jornada=36&num_temporada=2017",
+	"ClasificationWeight":"0.65",
+	"HistoricWeight":"0.35",
+  "QuinielaFixtureURL":"https://www.quinielista.es/ayudas/module_help_other_upcoming.asp?num_jornada=38&num_temporada=2017",
 	"RequestHeader":"X-Auth-Token",
 	"API_KEY": "e43b609f63f54d40b4e78258014acef2",
 	/*"LeagueRequest": "competitions/$LEAGUEID$/leagueTable/?matchday=22",*/
