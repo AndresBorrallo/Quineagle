@@ -5,7 +5,10 @@
 	"RequestHeader":"X-Auth-Token",
 	"API_KEY": "e43b609f63f54d40b4e78258014acef2",
 	/*"LeagueRequest": "competitions/$LEAGUEID$/leagueTable/?matchday=22",*/
-    "LeagueRequest": "competitions/$LEAGUEID$/leagueTable/",
+    "LeagueRequest": {
+        "Primera":"competitions/436/leagueTable/",
+        "Segunda":"competitions/437/leagueTable/"
+        },
 	"API_URL": "http://api.football-data.org/v1/",    
 	"Csv_URLs" : [
         "http://www.football-data.co.uk/mmz4281/9394/SP1.csv",

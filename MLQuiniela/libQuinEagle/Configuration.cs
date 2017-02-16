@@ -18,7 +18,8 @@ namespace libQuinEagle
 
 		public string API_KEY { get; set; }
 
-		public string LeagueRequest { get; set; }
+		//public string LeagueRequest { get; set; }
+		public Dictionary<string, string> LeagueRequest { get; set; }
 
 		public string API_URL { get; set; }
 

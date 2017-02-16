@@ -1,9 +1,5 @@
 ﻿<Properties StartupConfiguration="{93142EB1-5542-45C8-851A-1AEC1ABFCCDC}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="libQuinEagle/Statistic/HistoricalStatistic.cs">
-    <Files>
-      <File FileName="libQuinEagle/Statistic/HistoricalStatistic.cs" Line="22" Column="190" />
-    </Files>
-  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />

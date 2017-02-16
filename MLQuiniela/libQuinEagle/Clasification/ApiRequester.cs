@@ -21,7 +21,8 @@ namespace libQuinEagle.Clasification
 
 		public string API_KEY { get; set; }
 
-		public string LeagueRequest { get; set; }
+		//public string LeagueRequest { get; set; }
+		public Dictionary<string, string> LeagueRequest { get; set; }
 
 		public string API_URL { get; set; }
 
@@ -39,9 +40,13 @@ namespace libQuinEagle.Clasification
 
 			try
 			{
-				string request = $"{API_URL}{LeagueRequest}";
+				//string request = $"{API_URL}{LeagueRequest}";
+				string leaguerequest = null;
+				LeagueRequest.TryGetValue( EnumUtility.GetDescriptionFromEnumValue( league ), out leaguerequest);
 
-				request = request.Replace( "$LEAGUEID$", ( ( int )league ).ToString() );
+				string request = $"{API_URL}{leaguerequest}";
+
+				//request = request.Replace( "$LEAGUEID$", ( ( int )league ).ToString() );
 
 				WebHeaderCollection headers = new WebHeaderCollection();
 				headers.Add( RequestHeader, API_KEY );

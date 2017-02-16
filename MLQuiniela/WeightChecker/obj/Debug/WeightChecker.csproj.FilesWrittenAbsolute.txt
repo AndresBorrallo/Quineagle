@@ -1,6 +1,7 @@
 /Users/jesus/Projects/Quineagle/MLQuiniela/WeightChecker/obj/Debug/.NETFramework,Version=v4.5.AssemblyAttribute.cs
 /Users/jesus/Projects/Quineagle/MLQuiniela/WeightChecker/bin/Debug/Configuration.json
 /Users/jesus/Projects/Quineagle/MLQuiniela/WeightChecker/bin/Debug/TeamsNames.json
+/Users/jesus/Projects/Quineagle/MLQuiniela/WeightChecker/bin/Debug/WeightChecker.exe.config
 /Users/jesus/Projects/Quineagle/MLQuiniela/WeightChecker/bin/Debug/WeightChecker.exe.mdb
 /Users/jesus/Projects/Quineagle/MLQuiniela/WeightChecker/bin/Debug/WeightChecker.exe
 /Users/jesus/Projects/Quineagle/MLQuiniela/WeightChecker/obj/Debug/WeightChecker.exe
@@ -12,4 +13,3 @@
 /Users/jesus/Projects/Quineagle/MLQuiniela/WeightChecker/bin/Debug/MMLib.Extensions.dll
 /Users/jesus/Projects/Quineagle/MLQuiniela/WeightChecker/bin/Debug/HtmlAgilityPack.dll
 /Users/jesus/Projects/Quineagle/MLQuiniela/WeightChecker/bin/Debug/MMLib.Core.dll
-/Users/jesus/Projects/Quineagle/MLQuiniela/WeightChecker/bin/Debug/WeightChecker.exe.config
