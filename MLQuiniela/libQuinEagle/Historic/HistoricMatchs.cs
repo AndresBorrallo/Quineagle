@@ -14,28 +14,42 @@ namespace libQuinEagle.Historic
 	/// </summary>
 	public class HistoricMatchs
 	{
+		private const string FOLDERPATH = @"csvs";
+
 		private ILog Log { get; } = LogManager.GetLogger( MethodBase.GetCurrentMethod().DeclaringType );
 
 		private List<Match> _matchs = new List<Match>();
 
-		public void LoadHistoric( List<string> urls )
+		public void LoadHistoric( List<Tuple<string,string,bool>> files )
 		{
 			_matchs.Clear();
-			foreach( string url in urls )
+
+			// Comprobar si existe el directorio con los ficheros csv
+			if( !Directory.Exists( FOLDERPATH ) )
 			{
-				Log.Debug($"Descargando csv de {url}");
-				_loadHistoricFromUrl( url );
+				Directory.CreateDirectory( FOLDERPATH );
+			}
+
+			// Por cada fichero, comprobar si existe y si no bajarlo
+			// algunos ficheros hay que forzar bajarlos existan o no
+			foreach(var t in files)
+			{
+				if( !File.Exists( $"{FOLDERPATH}/{t.Item1}" ) || t.Item3 )
+				{
+					_download_csv( t.Item1, t.Item2);
+				}
+				_loadHistoricFromFile( t.Item1 );
 			}
 
 			Log.Info( $"Historical Loaded with {_matchs.Count} matchs" );
 		}
 
-		private void _loadHistoricFromUrl( string url )
+		private void _loadHistoricFromFile( string file_name )
 		{
 			try
 			{
 
-				string fileList = _getCSV( url );
+				string fileList = _getCSV( file_name );
 				IEnumerable<string> lines;
 
 				lines = fileList.Split( '\n' ).Skip( 1 );
@@ -69,17 +83,24 @@ namespace libQuinEagle.Historic
 			}
 		}
 
-		private string _getCSV( string url )
+		private string _getCSV( string file_name )
 		{
+			return File.ReadAllText( $"{FOLDERPATH}/{file_name}" );
+		}
+
+		private void _download_csv( string file_name, string url )
+		{
+			Log.Debug( $"Descargando fichero {file_name} de {url}" );
+
 			HttpWebRequest req = ( HttpWebRequest )WebRequest.Create( url );
 			HttpWebResponse resp = ( HttpWebResponse )req.GetResponse();
 
 			StreamReader sr = new StreamReader( resp.GetResponseStream() );
-			string results = sr.ReadToEnd();
+			string csv = sr.ReadToEnd();
+
+			File.WriteAllText( $"{FOLDERPATH}/{file_name}", csv );
 
 			sr.Close();
-
-			return results;
 		}
 
 		public MatchStatistic GetStatistic( string HomeTeam, string AwayTeam )

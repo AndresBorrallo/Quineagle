@@ -23,6 +23,6 @@ namespace libQuinEagle
 
 		public string API_URL { get; set; }
 
-		public List<string> Csv_URLs { get; set; }
+		public List<Tuple<string,string,bool>> Csv_URLs { get; set; }
 	}
 }
