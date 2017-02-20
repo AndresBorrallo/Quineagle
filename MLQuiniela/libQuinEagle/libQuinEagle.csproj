@@ -44,6 +44,21 @@
       <HintPath>..\packages\MMLib.Extensions.1.0.10.13\lib\MMLib.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml" />
+    <Reference Include="Accord">
+      <HintPath>..\packages\Accord.3.4.0\lib\net45\Accord.dll</HintPath>
+    </Reference>
+    <Reference Include="Accord.Math.Core">
+      <HintPath>..\packages\Accord.Math.3.4.0\lib\net45\Accord.Math.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Accord.Math">
+      <HintPath>..\packages\Accord.Math.3.4.0\lib\net45\Accord.Math.dll</HintPath>
+    </Reference>
+    <Reference Include="Accord.Statistics">
+      <HintPath>..\packages\Accord.Statistics.3.4.0\lib\net45\Accord.Statistics.dll</HintPath>
+    </Reference>
+    <Reference Include="Accord.Fuzzy">
+      <HintPath>..\packages\Accord.Fuzzy.3.4.0\lib\net45\Accord.Fuzzy.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -61,6 +76,7 @@
     <Compile Include="Fixture.cs" />
     <Compile Include="Nomio.cs" />
     <Compile Include="TeamsNames.cs" />
+    <Compile Include="Fuzzy\FuzzyCalculator.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -72,5 +88,9 @@
     </None>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Fuzzy\" />
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\Accord.3.4.0\build\Accord.targets" Condition="Exists('..\packages\Accord.3.4.0\build\Accord.targets')" />
 </Project>

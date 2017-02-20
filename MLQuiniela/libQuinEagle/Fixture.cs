@@ -11,5 +11,7 @@ namespace libQuinEagle
 		public string AwayTeam { get; set; }
 
 		public QuinielaResult Result { get; set; }
+
+		public float Probability { get; set; }
 	}
 }

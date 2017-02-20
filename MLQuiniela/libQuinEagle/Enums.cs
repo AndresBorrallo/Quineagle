@@ -17,16 +17,25 @@ namespace libQuinEagle
 	public enum QuinielaResult
 	{
 		[Description( "Vacio" )]
-		VOID,
+		VOID = 0,
 
 		[Description( "1" )]
-		ONE,
+		ONE = 1,
 
 		[Description( "X" )]
-		X,
+		X = 2,
 
 		[Description( "2" )]
-		TWO
+		TWO = 4,
+
+		[Description( "1-X" )]
+		ONEX = 3,
+
+		[Description( "2-X" )]
+		TWOX = 6,
+
+		[Description( "1-X-2" )]
+		ONEXTWO = 7
 	}
 
 	public static class EnumUtility

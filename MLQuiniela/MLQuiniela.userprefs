@@ -1,11 +1,9 @@
 ﻿<Properties StartupConfiguration="{93142EB1-5542-45C8-851A-1AEC1ABFCCDC}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="libQuinEagle/Historic/HistoricMatchs.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="libQuinEagle/Fuzzy/FuzzyCalculator.cs">
     <Files>
-      <File FileName="MLQuiniela/Program.cs" Line="1" Column="1" />
-      <File FileName="libQuinEagle/Historic/HistoricMatchs.cs" Line="45" Column="1" />
-      <File FileName="libQuinEagle/Configuration.json" Line="58" Column="27" />
-      <File FileName="libQuinEagle/Configuration.cs" Line="24" Column="38" />
-      <File FileName="MLQuiniela/App.config" Line="6" Column="2" />
+      <File FileName="libQuinEagle/Fuzzy/FuzzyCalculator.cs" Line="72" Column="10" />
+      <File FileName="libQuinEagle/Enums.cs" Line="38" Column="14" />
+      <File FileName="libQuinEagle/Fixtures/FixtureRequester.cs" Line="21" Column="23" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
