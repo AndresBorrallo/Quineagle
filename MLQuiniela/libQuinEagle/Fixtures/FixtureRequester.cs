@@ -158,7 +158,8 @@ namespace libQuinEagle.Fixtures
 
 			foreach( var a in _Fixtures )
 			{
-				Log.Info( $"{a.HomeTeam} - {a.AwayTeam}\t{EnumUtility.GetDescriptionFromEnumValue(a.Result)}" );
+				//Log.Info( $"{a.HomeTeam} - {a.AwayTeam}\t{EnumUtility.GetDescriptionFromEnumValue(a.Result)}" );
+				Log.Info( a.ToString() );
 			}
 		}
 	}

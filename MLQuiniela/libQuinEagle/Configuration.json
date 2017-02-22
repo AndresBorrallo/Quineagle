@@ -6,8 +6,8 @@
 	"API_KEY": "e43b609f63f54d40b4e78258014acef2",
 	/*"LeagueRequest": "competitions/$LEAGUEID$/leagueTable/?matchday=22",*/
     "LeagueRequest": {
-        "Primera":"competitions/436/leagueTable/",
-        "Segunda":"competitions/437/leagueTable/"
+        "Primera":"competitions/436/leagueTable/?matchday=23",
+        "Segunda":"competitions/437/leagueTable/?matchday=26"
         },
 	"API_URL": "http://api.football-data.org/v1/",    
 	"Csv_URLs" : [
@@ -56,5 +56,16 @@
         {"item1":"1516_SP2.csv","item2":"http://www.football-data.co.uk/mmz4281/1516/SP2.csv","item3":false},
         {"item1":"1617_SP1.csv","item2":"http://www.football-data.co.uk/mmz4281/1617/SP1.csv","item3":true},
         {"item1":"1617_SP3.csv","item2":"http://www.football-data.co.uk/mmz4281/1617/SP2.csv","item3":true}
-    ]
+    ],
+	"FuzzyConf": {
+		"X1_1": "53.0",
+		"X2_1": "58.0",
+		"X1_X":	"42.0",
+		"X2_X": "47.0",
+		"X3_X": "53.0",
+		"X4_X": "58.0",
+		"X1_2": "42.0",
+		"X2_2": "47.0",
+		"MaxDoubles": "3"
+	}
 }

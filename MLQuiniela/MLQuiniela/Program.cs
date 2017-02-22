@@ -8,6 +8,7 @@ using libQuinEagle.Clasification;
 using libQuinEagle.Fixtures;
 using libQuinEagle.Historic;
 using libQuinEagle.Statistic;
+using libQuinEagle.Fuzzy;
 using log4net;
 using log4net.Config;
 using Newtonsoft.Json;
@@ -63,6 +64,13 @@ namespace MLQuiniela
 			ar.PrintLeague( LeagueEnum.PRIMERA );
 			ar.PrintLeague( LeagueEnum.SEGUNDA );
 
+			// Preparamos el Motor de logica difusa
+			FuzzyCalculator Fuzzy = new FuzzyCalculator() { MaxMultipleBets = configuration.FuzzyConf.MaxDoubles };
+			Fuzzy.SetFuzzyValues( configuration.FuzzyConf.X1_1, configuration.FuzzyConf.X2_1,
+								 configuration.FuzzyConf.X1_X, configuration.FuzzyConf.X2_X,
+								 configuration.FuzzyConf.X3_X, configuration.FuzzyConf.X4_X,
+								 configuration.FuzzyConf.X1_2, configuration.FuzzyConf.X2_2 );
+
 			// Preparamos clases para hacer calculos
 			IStatistic historical_st = new HistoricalStatistic()
 			{
@@ -78,8 +86,9 @@ namespace MLQuiniela
 			};
 
 			// Recorremos los emparejamientos y hacemos calculos
-			List<string> Soluciones = new List<string>();
-			foreach( var a in fr.GetFixtures() )
+			//List<string> Soluciones = new List<string>();
+			List<Fixture> fixtures = fr.GetFixtures();
+			foreach( var a in fixtures )
 			{
 				List<Nomio> formula = new List<Nomio>();
 
@@ -89,13 +98,14 @@ namespace MLQuiniela
 				formula.Add( new Nomio() { Variable = classification_st.GetStatistic( a ), Weight = historical_value == 0f ? 1f : classification_st.Weight } );
 
 				float solution = formula.Sum( n => n.Variable * n.Weight );
-                char forecast = (solution >= 55) ? '1' : ((solution >= 43) ? 'X' : '2');
 
-				Soluciones.Add( $"Solution for {a.HomeTeam}-{a.AwayTeam}: {forecast} \t\tResult :{solution}%" );
+				a.Probability = solution;
 			}
 
-			foreach( var s in Soluciones )
-				Log.Info( s );
+			Fuzzy.GetBet( ref fixtures );
+
+			foreach( var f in fixtures )
+				Log.Info( f.ToString());
 
 			Console.ReadKey();
         }

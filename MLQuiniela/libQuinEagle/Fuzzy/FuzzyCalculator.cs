@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using Accord.Fuzzy;
@@ -30,7 +31,7 @@ namespace libQuinEagle.Fuzzy
 
 			Log.Info( $"Setting Function for '2' with values 0 - {f1_2} - {f2_2}" );
 			Log.Info( $"Setting Function for 'X' with values {f1_X} - {f2_X} - {f3_X} - {f4_X}" );
-			Log.Info( $"Setting Function for '1' with values {f1_1} - {f1_2} - 100" );
+			Log.Info( $"Setting Function for '1' with values {f1_1} - {f2_1} - 100" );
 
 			_lvlProbabilidad.AddLabel( _fsUno );
 			_lvlProbabilidad.AddLabel( _fsDos );
@@ -50,10 +51,48 @@ namespace libQuinEagle.Fuzzy
 
 				// Ahora recorremos la lista otra vez y cogemos las apuestas dobles
 				// Eliminamos las que esten en los extremos hasta tener solo el numero de doblrd que queremos
-				IEnumerable<Fixture> dobles = fixtures.Where( a => a.Result == QuinielaResult.ONEX || a.Result == QuinielaResult.TWOX );
+				List<Fixture> dobles = fixtures.Where( a => a.Result == QuinielaResult.ONEX || a.Result == QuinielaResult.TWOX ).ToList();
 				if( dobles.Count() > MaxMultipleBets )
 				{
-					
+					for( int i = 0; i < dobles.Count - MaxMultipleBets; i++ )
+					{
+						float y1, yX, y2;
+
+						Fixture candidata = null;
+						float minimo = float.MaxValue;
+						QuinielaResult valor_destino = QuinielaResult.VOID;
+
+						dobles.ForEach( a =>
+						 {
+							 _getMemberships( a.Probability, out y1, out yX, out y2 );
+
+							 if( a.Result == QuinielaResult.ONEX )
+							 {
+								if( Math.Min( y1, yX ) < minimo )
+								{
+									minimo = Math.Min( y1, yX );
+									candidata = a;
+									 if( y1 <= yX )
+										 valor_destino = QuinielaResult.X;
+									 else if( yX < y1 )
+										 valor_destino = QuinielaResult.ONE;
+								}
+							 }
+							 else if( a.Result == QuinielaResult.TWOX )
+							 {
+								if( Math.Min( y2, yX ) < minimo )
+								 {
+									 minimo = Math.Min( y2, yX );
+									 candidata = a;
+									 if( y2 <= yX )
+										 valor_destino = QuinielaResult.X;
+									 else if( yX < y2 )
+										valor_destino = QuinielaResult.TWO;
+								 }
+							 }
+						 } );
+						candidata.Result = valor_destino;
+					}
 				}
 			}
 			else
@@ -74,11 +113,10 @@ namespace libQuinEagle.Fuzzy
 
 			QuinielaResult res = QuinielaResult.VOID;
 
-			float y1 = _lvlProbabilidad.GetLabelMembership( "UNO", probability );
-			float yX = _lvlProbabilidad.GetLabelMembership( "EQUIS", probability );
-			float y2 = _lvlProbabilidad.GetLabelMembership( "DOS", probability );
+			float y1, yX, y2;
+			_getMemberships( probability, out y1, out yX, out y2 );
 
-			if( y1 > 0.0 )
+ 			if( y1 > 0.0 )
 				res = ( QuinielaResult )( ( int )res + ( int )QuinielaResult.ONE );
 
 			if( yX > 0.0 )
@@ -88,6 +126,13 @@ namespace libQuinEagle.Fuzzy
 				res = ( QuinielaResult )( ( int )res + ( int )QuinielaResult.TWO );
 
 			return res;
+		}
+
+		private void _getMemberships( float probability,  out float y1, out float yX, out float y2 )
+		{
+			y1 = _lvlProbabilidad.GetLabelMembership( "UNO", probability );
+			yX = _lvlProbabilidad.GetLabelMembership( "EQUIS", probability );
+			y2 = _lvlProbabilidad.GetLabelMembership( "DOS", probability );
 		}
 	}
 }
