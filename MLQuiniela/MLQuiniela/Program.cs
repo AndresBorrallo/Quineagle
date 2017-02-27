@@ -107,6 +107,8 @@ namespace MLQuiniela
 			foreach( var f in fixtures )
 				Log.Info( f.ToString());
 
+			Log.Info($"Promedio = {fixtures.Select(a => a.Probability).Average()}%");
+
 			Console.ReadKey();
         }
 
