@@ -64,6 +64,7 @@ namespace MLQuiniela
 			ar.PrintLeague( LeagueEnum.PRIMERA );
 			ar.PrintLeague( LeagueEnum.SEGUNDA );
 
+<<<<<<< HEAD
 			// Preparamos el Motor de logica difusa
 			FuzzyCalculator Fuzzy = new FuzzyCalculator() { MaxMultipleBets = configuration.FuzzyConf.MaxDoubles };
 			Fuzzy.SetFuzzyValues( configuration.FuzzyConf.X1_1, configuration.FuzzyConf.X2_1,
@@ -71,6 +72,8 @@ namespace MLQuiniela
 								 configuration.FuzzyConf.X3_X, configuration.FuzzyConf.X4_X,
 								 configuration.FuzzyConf.X1_2, configuration.FuzzyConf.X2_2 );
 
+=======
+>>>>>>> f-Fuzzy-con-ajuste
 			// Preparamos clases para hacer calculos
 			IStatistic historical_st = new HistoricalStatistic()
 			{
@@ -102,12 +105,39 @@ namespace MLQuiniela
 				a.Probability = solution;
 			}
 
+<<<<<<< HEAD
+=======
+			// Preparamos el Motor de logica difusa
+			FuzzyCalculator Fuzzy = new FuzzyCalculator() { MaxMultipleBets = configuration.FuzzyConf.MaxDoubles };
+
+			// Antes de meterle los valores de referecia de las curvas, vemos si hay que bascularla a un lado u otro
+			// Obtenemos el centro entre X2_X y X3_X (normalmente sera 50)
+			float centro = ( configuration.FuzzyConf.X2_X + configuration.FuzzyConf.X3_X ) / 2f;
+			// obtenemos la variacion real con respecto al centro
+			float diferencia = fixtures.Select( a => a.Probability ).Average() - centro;
+			// ahora desplazamos las funciones
+			float X1_1 = configuration.FuzzyConf.X1_1 + diferencia;
+			float X2_1 = configuration.FuzzyConf.X2_1 + diferencia;
+			float X1_X = configuration.FuzzyConf.X1_X + diferencia;
+			float X2_X = configuration.FuzzyConf.X2_X + diferencia;
+			float X3_X = configuration.FuzzyConf.X3_X + diferencia;
+			float X4_X = configuration.FuzzyConf.X4_X + diferencia;
+			float X1_2 = configuration.FuzzyConf.X1_2 + diferencia;
+			float X2_2 = configuration.FuzzyConf.X2_2 + diferencia;
+
+			Fuzzy.SetFuzzyValues( X1_1, X2_1, X1_X, X2_X, X3_X, X4_X, X1_2, X2_2 );
+
+>>>>>>> f-Fuzzy-con-ajuste
 			Fuzzy.GetBet( ref fixtures );
 
 			foreach( var f in fixtures )
 				Log.Info( f.ToString());
 
+<<<<<<< HEAD
 			Log.Info($"Promedio = {fixtures.Select(a => a.Probability).Average()}%");
+=======
+			Log.Info( $"Media calculada = {fixtures.Select( a => a.Probability ).Average()}%" );
+>>>>>>> f-Fuzzy-con-ajuste
 
 			Console.ReadKey();
         }

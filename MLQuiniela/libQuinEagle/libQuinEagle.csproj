@@ -1,5 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
+<<<<<<< HEAD
 <Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+=======
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+>>>>>>> f-Fuzzy-con-ajuste
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -7,8 +11,12 @@
     <OutputType>Library</OutputType>
     <RootNamespace>libQuinEagle</RootNamespace>
     <AssemblyName>libQuinEagle</AssemblyName>
+<<<<<<< HEAD
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <TargetFrameworkProfile />
+=======
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+>>>>>>> f-Fuzzy-con-ajuste
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -82,14 +90,24 @@
   <ItemGroup />
   <ItemGroup>
     <None Include="Configuration.json">
+<<<<<<< HEAD
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+=======
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+>>>>>>> f-Fuzzy-con-ajuste
     </None>
     <None Include="TeamsNames.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
+<<<<<<< HEAD
   <ItemGroup />
+=======
+  <ItemGroup>
+    <Folder Include="Fuzzy\" />
+  </ItemGroup>
+>>>>>>> f-Fuzzy-con-ajuste
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Accord.3.4.0\build\Accord.targets" Condition="Exists('..\packages\Accord.3.4.0\build\Accord.targets')" />
 </Project>

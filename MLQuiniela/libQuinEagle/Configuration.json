@@ -1,13 +1,22 @@
 ﻿{
 	"ClasificationWeight":"0.65",
 	"HistoricWeight":"0.35",
+<<<<<<< HEAD
   "QuinielaFixtureURL":"https://www.quinielista.es/ayudas/module_help_other_upcoming.asp?num_jornada=41&num_temporada=2017",
+=======
+  "QuinielaFixtureURL":"https://www.quinielista.es/ayudas/module_help_other_upcoming.asp?num_jornada=38&num_temporada=2017",
+>>>>>>> f-Fuzzy-con-ajuste
 	"RequestHeader":"X-Auth-Token",
 	"API_KEY": "e43b609f63f54d40b4e78258014acef2",
 	/*"LeagueRequest": "competitions/$LEAGUEID$/leagueTable/?matchday=22",*/
     "LeagueRequest": {
+<<<<<<< HEAD
         "Primera":"competitions/436/leagueTable/",
         "Segunda":"competitions/437/leagueTable/"
+=======
+        "Primera":"competitions/436/leagueTable/?matchday=23",
+        "Segunda":"competitions/437/leagueTable/?matchday=26"
+>>>>>>> f-Fuzzy-con-ajuste
         },
 	"API_URL": "http://api.football-data.org/v1/",    
 	"Csv_URLs" : [
@@ -46,7 +55,11 @@
         {"item1":"1011_SP2.csv","item2":"http://www.football-data.co.uk/mmz4281/1011/SP2.csv","item3":false},
         {"item1":"1112_SP1.csv","item2":"http://www.football-data.co.uk/mmz4281/1112/SP1.csv","item3":false},
         {"item1":"1112_SP2.csv","item2":"http://www.football-data.co.uk/mmz4281/1112/SP2.csv","item3":false},
+<<<<<<< HEAD
 		    {"item1":"1213_SP1.csv","item2":"http://www.football-data.co.uk/mmz4281/1213/SP1.csv","item3":false},
+=======
+		{"item1":"1213_SP1.csv","item2":"http://www.football-data.co.uk/mmz4281/1213/SP1.csv","item3":false},
+>>>>>>> f-Fuzzy-con-ajuste
         {"item1":"1213_SP2.csv","item2":"http://www.football-data.co.uk/mmz4281/1213/SP2.csv","item3":false},
         {"item1":"1314_SP1.csv","item2":"http://www.football-data.co.uk/mmz4281/1314/SP1.csv","item3":false},
         {"item1":"1314_SP2.csv","item2":"http://www.football-data.co.uk/mmz4281/1314/SP2.csv","item3":false},
@@ -58,6 +71,7 @@
         {"item1":"1617_SP2.csv","item2":"http://www.football-data.co.uk/mmz4281/1617/SP2.csv","item3":true}
     ],
 	"FuzzyConf": {
+<<<<<<< HEAD
 		"X1_1": "52.0",
 		"X2_1": "57.0",
 		"X1_X":	"43.0",
@@ -67,5 +81,19 @@
 		"X1_2": "43.0",
 		"X2_2": "48.0",
 		"MaxDoubles": "3"
+=======
+		"X1_2": "43.0",
+		"X2_2": "49.0",
+
+		"X1_X":	"43.0",
+		"X2_X": "49.0",
+		"X3_X": "51.0",
+		"X4_X": "57.0",
+
+		"X1_1": "51.0",
+		"X2_1": "57.0",
+
+		"MaxDoubles": "5"
+>>>>>>> f-Fuzzy-con-ajuste
 	}
 }
