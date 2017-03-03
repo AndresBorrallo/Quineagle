@@ -100,18 +100,18 @@ namespace MLQuiniela
 
 			// Antes de meterle los valores de referecia de las curvas, vemos si hay que bascularla a un lado u otro
 			// Obtenemos el centro entre X2_X y X3_X (normalmente sera 50)
-			float centro = ( configuration.FuzzyConf.X2_X + configuration.FuzzyConf.X3_X ) / 2f;
+			//float centro = ( configuration.FuzzyConf.X2_X + configuration.FuzzyConf.X3_X ) / 2f;
 			// obtenemos la variacion real con respecto al centro
-			float diferencia = fixtures.Select( a => a.Probability ).Average() - centro;
+			//float diferencia = fixtures.Select( a => a.Probability ).Average() - centro;
 			// ahora desplazamos las funciones
-			float X1_1 = configuration.FuzzyConf.X1_1 + diferencia;
-			float X2_1 = configuration.FuzzyConf.X2_1 + diferencia;
-			float X1_X = configuration.FuzzyConf.X1_X + diferencia;
-			float X2_X = configuration.FuzzyConf.X2_X + diferencia;
-			float X3_X = configuration.FuzzyConf.X3_X + diferencia;
-			float X4_X = configuration.FuzzyConf.X4_X + diferencia;
-			float X1_2 = configuration.FuzzyConf.X1_2 + diferencia;
-			float X2_2 = configuration.FuzzyConf.X2_2 + diferencia;
+			float X1_1 = configuration.FuzzyConf.X1_1;
+			float X2_1 = configuration.FuzzyConf.X2_1;
+			float X1_X = configuration.FuzzyConf.X1_X;
+			float X2_X = configuration.FuzzyConf.X2_X;
+			float X3_X = configuration.FuzzyConf.X3_X;
+			float X4_X = configuration.FuzzyConf.X4_X;
+			float X1_2 = configuration.FuzzyConf.X1_2;
+			float X2_2 = configuration.FuzzyConf.X2_2;
 
 			Fuzzy.SetFuzzyValues( X1_1, X2_1, X1_X, X2_X, X3_X, X4_X, X1_2, X2_2 );
 

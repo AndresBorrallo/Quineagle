@@ -1,13 +1,13 @@
 ﻿{
 	"ClasificationWeight":"0.65",
 	"HistoricWeight":"0.35",
-        "QuinielaFixtureURL":"https://www.quinielista.es/ayudas/module_help_other_upcoming.asp?num_jornada=38&num_temporada=2017",
+        "QuinielaFixtureURL":"https://www.quinielista.es/ayudas/module_help_other_upcoming.asp?num_jornada=42&num_temporada=2017",
 	"RequestHeader":"X-Auth-Token",
 	"API_KEY": "e43b609f63f54d40b4e78258014acef2",
 	/*"LeagueRequest": "competitions/$LEAGUEID$/leagueTable/?matchday=22",*/
     "LeagueRequest": {
-        "Primera":"competitions/436/leagueTable/?matchday=23",
-        "Segunda":"competitions/437/leagueTable/?matchday=26"
+        "Primera":"competitions/436/leagueTable",
+        "Segunda":"competitions/437/leagueTable"
         },
 	"API_URL": "http://api.football-data.org/v1/",    
 	"Csv_URLs" : [
@@ -69,6 +69,6 @@
 		"X1_1": "51.0",
 		"X2_1": "57.0",
 
-		"MaxDoubles": "5"
+		"MaxDoubles": "3"
 	}
 }
