@@ -103,16 +103,37 @@ namespace libQuinEagle.Historic
 			sr.Close();
 		}
 
+		/// <summary>
+		/// Devuelve las estadisticas de un determinado encuentro, si el equipo visitante es NULL 
+		/// devuelve las estadisticas totales del equipo local con todos los demas
+		/// </summary>
+		/// <returns>The statistic.</returns>
+		/// <param name="HomeTeam">Home team.</param>
+		/// <param name="AwayTeam">Away team.</param>
 		public MatchStatistic GetStatistic( string HomeTeam, string AwayTeam )
 		{
 			MatchStatistic ms = new MatchStatistic();
-			IEnumerable<Match> matches = _matchs.Where( a => a.AwayTeam == AwayTeam && a.HomeTeam == HomeTeam );
+			IEnumerable<Match> matches = null;
+
+			if( string.IsNullOrEmpty( HomeTeam ) )
+			{
+				matches = _matchs.Where( a => a.AwayTeam == AwayTeam );
+			}
+			else if( string.IsNullOrEmpty( AwayTeam ) )
+			{
+				matches = _matchs.Where( a => a.HomeTeam == HomeTeam );
+			}
+			else
+			{
+				matches = _matchs.Where( a => a.AwayTeam == AwayTeam && a.HomeTeam == HomeTeam );
+			}
+
 			int n_matchs = matches.Count();
 
 			ms.AwayTeam = AwayTeam;
 			ms.HomeTeam = HomeTeam;
 			ms.NMatchs = n_matchs;
-            ms.NPoints = n_matchs * 3;
+			ms.NPoints = n_matchs * 3;
 
 			if( n_matchs > 0 )
 			{
@@ -124,10 +145,10 @@ namespace libQuinEagle.Historic
 				ms.DrawsPercent = ( float )draws/n_matchs * 100;
 				ms.LostPercent = ( float )losts/n_matchs  * 100;
 
-                ms.HomeNPoints = wins * 3 + draws;
-                ms.AwayNPoints = losts * 3 + draws;
+				ms.HomeNPoints = wins * 3 + draws;
+				ms.AwayNPoints = losts * 3 + draws;
 
-                ms.GoalsInFavour = matches.Sum( x => x.HomeTeamGoal );
+				ms.GoalsInFavour = matches.Sum( x => x.HomeTeamGoal );
 				ms.GoalsAgainst = matches.Sum( x => x.AwayTeamGoal );
 			}
 			else

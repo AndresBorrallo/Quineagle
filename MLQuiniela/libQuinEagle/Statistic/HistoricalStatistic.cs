@@ -27,8 +27,21 @@ namespace libQuinEagle.Statistic
 				res = statistic.WinsPercent;
 			}
 			else
-				Log.Warn( $"Menos de 5 partidos de historico para {fixture.HomeTeam} vs {fixture.AwayTeam}, no se tendra en cuenta el historico" );
+			{
+				Log.Warn( $"Menos de 5 partidos de historico para {fixture.HomeTeam} vs {fixture.AwayTeam}, no se tendra en cuenta el historico\nSolicitando estadisticas totales de {fixture.HomeTeam}" );
+				// Buscamos todos los partidos de ese equipo
+				var home_stats = historics.GetStatistic( fixture.HomeTeam, null );
+				var away_stats = historics.GetStatistic( null, fixture.AwayTeam );
 
+				if( home_stats.NMatchs >= 5  && away_stats.NMatchs >= 5)
+				{
+					Log.Debug( $"Estadisticas totales de {fixture.HomeTeam}: P.J.: {home_stats.NMatchs} || P.G.: {home_stats.WinsPercent}% || P.E.:{home_stats.DrawsPercent}% || P.P.: {home_stats.LostPercent}%" );
+					Log.Debug( $"Estadisticas totales de {fixture.AwayTeam}: P.J.: {away_stats.NMatchs} || P.G.: {away_stats.WinsPercent}% || P.E.:{away_stats.DrawsPercent}% || P.P.: {away_stats.LostPercent}%" );
+
+					res = ( home_stats.WinsPercent + ( 100 - away_stats.WinsPercent - away_stats.DrawsPercent ) / 2);
+					Log.Debug( $"formula: ( {home_stats.WinsPercent} + (100 - {away_stats.WinsPercent} - {away_stats.DrawsPercent} ) / 2) = {res}" );
+				}
+			}
 			return res;
 		}
 	}
