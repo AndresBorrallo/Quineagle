@@ -27,6 +27,12 @@ namespace libQuinEagle.Historic
 
         public int HomeNPoints { get; set; }
 
-        public int AwayNPoints { get; set; }        
-    }
+        public int AwayNPoints { get; set; }
+
+		public int MatchWins { get; set; }
+
+		public int MatchDraws { get; set; }
+
+		public int MatchLosts { get; set; }
+	}
 }

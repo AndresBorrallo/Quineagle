@@ -24,7 +24,8 @@ namespace libQuinEagle.Statistic
 			// OJO CUIDADO!! quizas haya que devolver otra cosa o hacer calculos con los resultados
 			if( statistic.NMatchs >= 5 )
 			{
-				res = statistic.WinsPercent;
+				res = statistic.WinsPercent + (statistic.DrawsPercent / 2f);
+				//res = (statistic.HomeNPoints / statistic.NPoints) * 100f;
 			}
 			else
 			{

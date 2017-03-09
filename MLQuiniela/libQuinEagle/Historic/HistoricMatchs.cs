@@ -145,6 +145,10 @@ namespace libQuinEagle.Historic
 				ms.DrawsPercent = ( float )draws/n_matchs * 100;
 				ms.LostPercent = ( float )losts/n_matchs  * 100;
 
+				ms.MatchWins = wins;
+				ms.MatchDraws = draws;
+				ms.MatchLosts = losts;
+
 				ms.HomeNPoints = wins * 3 + draws;
 				ms.AwayNPoints = losts * 3 + draws;
 
