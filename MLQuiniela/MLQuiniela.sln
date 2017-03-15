@@ -1,13 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MLQuiniela", "MLQuiniela\MLQuiniela.csproj", "{93142EB1-5542-45C8-851A-1AEC1ABFCCDC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "libQuinEagle", "libQuinEagle\libQuinEagle.csproj", "{6ACD799D-1E25-404D-BDE1-88CDD99C2805}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeightChecker", "WeightChecker\WeightChecker.csproj", "{E1E23F1C-3C6D-4E8C-BA26-F4715904F7CB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UpdateDB", "UpdateDB\UpdateDB.csproj", "{CC873EE5-820D-4BCB-8880-87627608FCFC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,10 @@ Global
 		{6ACD799D-1E25-404D-BDE1-88CDD99C2805}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6ACD799D-1E25-404D-BDE1-88CDD99C2805}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6ACD799D-1E25-404D-BDE1-88CDD99C2805}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E1E23F1C-3C6D-4E8C-BA26-F4715904F7CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E1E23F1C-3C6D-4E8C-BA26-F4715904F7CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E1E23F1C-3C6D-4E8C-BA26-F4715904F7CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E1E23F1C-3C6D-4E8C-BA26-F4715904F7CB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC873EE5-820D-4BCB-8880-87627608FCFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC873EE5-820D-4BCB-8880-87627608FCFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC873EE5-820D-4BCB-8880-87627608FCFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC873EE5-820D-4BCB-8880-87627608FCFC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
