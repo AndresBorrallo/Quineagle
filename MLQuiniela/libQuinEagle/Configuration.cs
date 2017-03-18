@@ -23,6 +23,7 @@ namespace libQuinEagle
 
 		public int MaxDoubles { get; set; }
 	}
+
 	/// <summary>
 	/// La configuracion de la Aplicacion, basada en el fichero Configuration.json
 	/// </summary>
@@ -37,8 +38,7 @@ namespace libQuinEagle
 		public string RequestHeader { get; set; }
 
 		public string API_KEY { get; set; }
-
-		//public string LeagueRequest { get; set; }
+        
 		public Dictionary<string, string> LeagueRequest { get; set; }
 
 		public string API_URL { get; set; }

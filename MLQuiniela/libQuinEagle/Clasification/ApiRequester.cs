@@ -11,7 +11,7 @@ using System.Text;
 namespace libQuinEagle.Clasification
 {
 	/// <summary>
-	/// Optiene una clasificacion dada usando la API de football-data.org
+	/// Obtiene una clasificacion dada usando la API de football-data.org
 	/// </summary>
 	public class ApiRequester
 	{
@@ -20,17 +20,12 @@ namespace libQuinEagle.Clasification
 		public string RequestHeader { get; set; }
 
 		public string API_KEY { get; set; }
-
-		//public string LeagueRequest { get; set; }
+        
 		public Dictionary<string, string> LeagueRequest { get; set; }
 
 		public string API_URL { get; set; }
 
 		private Dictionary<LeagueEnum, LeagueTable> _leagues = new Dictionary<LeagueEnum, LeagueTable>();
-		//private LeagueTable _primeraDivision = null;
-
-		//private LeagueTable _segundaDivision = null;
-
 
 		public void DownloadLeague( LeagueEnum league )
 		{

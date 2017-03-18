@@ -70,8 +70,7 @@ namespace MLQuiniela
 				historics = hm,
 				Weight = configuration.HistoricWeight
 			};
-
-
+            
 			IStatistic classification_st = new ClassificationStatistic()
 			{
 				req = ar,
