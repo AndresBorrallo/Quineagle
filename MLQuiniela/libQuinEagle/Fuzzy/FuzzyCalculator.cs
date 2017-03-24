@@ -19,7 +19,7 @@ namespace libQuinEagle.Fuzzy
 
 		private bool IsSet = false;
 
-		public int MaxMultipleBets { get; set; } = 3;
+		public int MaxMultipleBets { get; set; } = int.MaxValue;
 
 		public void SetFuzzyValues( float f1_1, float f2_1, float f1_X, float f2_X, float f3_X, float f4_X, float f1_2, float f2_2 )
 		{
@@ -46,7 +46,7 @@ namespace libQuinEagle.Fuzzy
 			{
 				foreach( var f in fixtures )
 				{
-					f.Result = _getBet( f.Probability );
+					f.Result = GetBet( f.Probability );
 				}
 
 				// Ahora recorremos la lista otra vez y cogemos las apuestas dobles
@@ -99,7 +99,7 @@ namespace libQuinEagle.Fuzzy
 				Log.Warn( "Valores difusos no establecidos" );
 		}
 
-		private QuinielaResult _getBet( float probability )
+		public QuinielaResult GetBet( float probability )
 		{
 			/*
 			VOID 	= 0,

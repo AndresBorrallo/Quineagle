@@ -25,10 +25,16 @@ namespace libQuinEagle.Clasification
 
 		public string API_URL { get; set; }
 
-		private Dictionary<LeagueEnum, LeagueTable> _leagues = new Dictionary<LeagueEnum, LeagueTable>();
-
-		public void DownloadLeague( LeagueEnum league )
+		//private Dictionary<LeagueEnum, LeagueTable> _leagues = new Dictionary<LeagueEnum, LeagueTable>();
+		private Dictionary<LeagueEnum, Dictionary<int, LeagueTable>> _leagues = new Dictionary<LeagueEnum, Dictionary<int, LeagueTable>>()
 		{
+			{ LeagueEnum.PRIMERA , new Dictionary<int,LeagueTable>() },
+			{ LeagueEnum.SEGUNDA, new Dictionary<int, LeagueTable>() }
+		};
+
+		private void _downloadLeague( LeagueEnum league, int journey )
+		{
+			//http://api.football-data.org/v1/competitions/436/leagueTable/?matchday=22"
 			LeagueTable table = null;
 
 			Log.Debug( $"Solicitando datos de la liga {EnumUtility.GetDescriptionFromEnumValue(league)}" );
@@ -39,7 +45,7 @@ namespace libQuinEagle.Clasification
 				string leaguerequest = null;
 				LeagueRequest.TryGetValue( EnumUtility.GetDescriptionFromEnumValue( league ), out leaguerequest);
 
-				string request = $"{API_URL}{leaguerequest}";
+				string request = $"{API_URL}{leaguerequest}".Replace("$JOURNEY$", journey.ToString()) ;
 
 				//request = request.Replace( "$LEAGUEID$", ( ( int )league ).ToString() );
 
@@ -68,34 +74,35 @@ namespace libQuinEagle.Clasification
 				Log.Warn( e.Message );
 			}
 
-			_leagues[ league ] = table;
+			_leagues[ league ][journey] = table;
 		}
 
-		public LeagueTable GetLeague( LeagueEnum league )
+		public LeagueTable GetLeague( LeagueEnum league, int journey )
 		{
 			LeagueTable tabla = null;
 
-			if( !_leagues.TryGetValue( league, out tabla ) )
+			if (!_leagues[league].TryGetValue( journey, out tabla ) )
 			{
-				Log.Warn( $"No existe la liga {EnumUtility.GetDescriptionFromEnumValue(league)}" );
+				Log.Warn( $"No existe la jornada {journey} de la liga {EnumUtility.GetDescriptionFromEnumValue(league)}. Descargando..." );
+
+				_downloadLeague(league, journey);	
 			}
+
+			tabla = _leagues[league][journey];
 
 			return tabla;
 		}
 
-		public void PrintLeague( LeagueEnum league )
+		public void PrintLeague( LeagueEnum league, int journey )
 		{
-			LeagueTable liga = null;
+			LeagueTable liga = GetLeague(league,journey);
 
-			if( _leagues.TryGetValue( league, out liga ))
+			Log.Info( $"Jornada numero {liga.matchday}" );
+			Log.Info( $"POS - NOMBRE - PUNTOS - JUGADOS - GANADOS - PERDIDOS - EMPATADOS - G.FAVOR - G.CONTRA" );
+
+			foreach (var c in liga.standing)
 			{
-				Log.Info( $"Jornada numero {liga.matchday}" );
-				Log.Info( $"POS - NOMBRE - PUNTOS - JUGADOS - GANADOS - PERDIDOS - EMPATADOS - G.FAVOR - G.CONTRA" );
-
-				foreach( var c in liga.standing )
-				{
-					Log.Info( $"{c.position} - {c.teamName} - {c.points} - {c.playedGames} - {c.wins} - {c.losses} - {c.draws} - {c.goals} - {c.goalsAgainst}" );
-				}
+				Log.Info($"{c.position} - {c.teamName} - {c.points} - {c.playedGames} - {c.wins} - {c.losses} - {c.draws} - {c.goals} - {c.goalsAgainst}");
 			}
 		}
 

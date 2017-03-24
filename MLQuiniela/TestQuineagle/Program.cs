@@ -30,18 +30,44 @@ namespace TestQuineagle
             // Cargamos la configuracion
             Log.Info("Cargando configuracion");
             Configuration configuration = JsonConvert.DeserializeObject<Configuration>(File.ReadAllText(@"./Configuration.json"));
+			// Cargamos nombres de equipos
+			Log.Info("Cargando nombres de equipos de 'TeamsNames.json'");
+			var jObject = JObject.Parse(File.ReadAllText(@"./TeamsNames.json"));
+			var jToken = jObject.GetValue("TeamsNames");
+			Teams.TeamsNames = (Dictionary<string, List<string>>)jToken.ToObject(typeof(Dictionary<string, List<string>>));
+			Log.Info($"Se han cargado {Teams.TeamsNames.Values.Sum(x => x.Count) } nombres de equipos");
+
+			QuinEagleCalculator qc = new QuinEagleCalculator() { configuration = configuration };
+			qc.Configure();
 
             // Cargamos todos los partidos en una lista
             List<Match> matches = _getMatchesStoredDB();
 
-            // Seleccionamos todas las jornadas y años que tenemos partidos
-            List<JourneyDateClassification> journeys = matches.Select(a => new JourneyDateClassification(){ journey = a.journey, season = a.season })
-                                                            .Distinct(new JourneyDateClassification.DistinctJourneyDateClassificationComparer())
-                                                            .ToList();
+			// Seleccionamos todas las jornadas y años que tenemos partidos
+			//List<JourneyDateClassification> journeys = matches.Select(a => new JourneyDateClassification(){ journey = a.Journey, season = a.season })
+			//                                                .Distinct(new JourneyDateClassification.DistinctJourneyDateClassificationComparer())
+			//                                                .ToList();
 
-            // Cogemos todas las clasificaciones y las almacenamos para estas jornadas de estos años
-            Dictionary<int, Dictionary<LeagueEnum, LeagueTable>> classifications = _getClassifications(journeys, configuration);
-            
+			// Cogemos todas las clasificaciones y las almacenamos para estas jornadas de estos años
+			//Dictionary<int, Dictionary<LeagueEnum, LeagueTable>> classifications = _getClassifications(journeys, configuration);
+
+			List<Match> predictions = new List<Match>();
+			matches.ForEach(m =>
+			{
+				Match match = (Match)qc.GetResult(m);
+				match.season = m.season;
+				predictions.Add(match);
+			});
+
+			int aciertos = matches.Where(a => predictions.Any(
+				b => b.AwayTeam == a.AwayTeam &&
+				b.HomeTeam == a.HomeTeam &&
+				b.Journey == a.Journey &&
+				(b.Result & a.Result) != QuinielaResult.VOID)).Count();
+
+			Log.Info($"Aciertos {aciertos} de {predictions.Count}");
+			Log.Info($"Total: {aciertos / predictions.Count * 100}");
+
             Console.ReadKey();
         }
 
@@ -58,19 +84,21 @@ namespace TestQuineagle
                     leagueRequest.Add(EnumUtility.GetDescriptionFromEnumValue(LeagueEnum.PRIMERA), "competitions/436/leagueTable/?matchday=" + (j.journey - 1));
                     leagueRequest.Add(EnumUtility.GetDescriptionFromEnumValue(LeagueEnum.SEGUNDA), "competitions/437/leagueTable/?matchday=" + (j.journey - 1));
 
-                    ApiRequester ar = new ApiRequester()
-                    {
-                        API_KEY = configuration.API_KEY,
-                        API_URL = configuration.API_URL,
-                        RequestHeader = configuration.RequestHeader,
-                        LeagueRequest = leagueRequest
-                    };
+					ApiRequester ar = new ApiRequester()
+					{
+						API_KEY = configuration.API_KEY,
+						API_URL = configuration.API_URL,
+						RequestHeader = configuration.RequestHeader,
+						LeagueRequest = leagueRequest
+					};
 
+                    /*
                     ar.DownloadLeague(LeagueEnum.PRIMERA);
                     ar.DownloadLeague(LeagueEnum.SEGUNDA);
+					*/
 
-                    LeagueTable firstDiv = ar.GetLeague(LeagueEnum.PRIMERA);
-                    LeagueTable secondDiv = ar.GetLeague(LeagueEnum.SEGUNDA);
+					LeagueTable firstDiv = ar.GetLeague(LeagueEnum.PRIMERA,j.journey);
+					LeagueTable secondDiv = ar.GetLeague(LeagueEnum.SEGUNDA,j.journey);
 
                     Dictionary <LeagueEnum, LeagueTable> table = new Dictionary<LeagueEnum, LeagueTable>();
                     table.Add(LeagueEnum.PRIMERA, firstDiv);
@@ -113,13 +141,13 @@ namespace TestQuineagle
             {
                 Match m = new Match()
                 {
-                    homeTeam = Convert.ToString(data[0]),
-                    awayTeam = Convert.ToString(data[1]),
-                    result = Convert.ToString(data[2]),
-                    journey = Convert.ToInt32(data[3]),
+					HomeTeam = Convert.ToString(data[0]),
+					AwayTeam = Convert.ToString(data[1]),
+					Result = EnumUtility.GetEnumValueFromDescription<QuinielaResult>(Convert.ToString(data[2])),
+                    Journey = Convert.ToInt32(data[3]),
                     season = Convert.ToInt32(data[4])   
                 };
-                Log.Debug($"{m.homeTeam} - {m.awayTeam}: {m.result} (Temporada:{m.season-1}/{m.season} Jornada:{m.journey})");
+				Log.Debug($"{m.HomeTeam} - {m.AwayTeam}: {EnumUtility.GetDescriptionFromEnumValue(m.Result)} (Temporada:{m.season-1}/{m.season} Jornada:{m.Journey})");
                 matches.Add(m);
             }
 

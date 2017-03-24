@@ -78,6 +78,7 @@
     <Compile Include="Nomio.cs" />
     <Compile Include="Fuzzy\FuzzyCalculator.cs" />
     <Compile Include="TeamsNames.cs" />
+    <Compile Include="QuinEagleCalculator.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

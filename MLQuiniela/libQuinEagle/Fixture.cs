@@ -14,6 +14,8 @@ namespace libQuinEagle
 
 		public float Probability { get; set; }
 
+		public int Journey { get; set; }
+
 		public override string ToString()
 		{
 			return $"{HomeTeam} - {AwayTeam} - {Probability.ToString("0.00")}% - {EnumUtility.GetDescriptionFromEnumValue(Result)}";

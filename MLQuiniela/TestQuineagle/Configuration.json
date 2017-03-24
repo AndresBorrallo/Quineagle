@@ -6,10 +6,8 @@
 	"API_KEY": "e43b609f63f54d40b4e78258014acef2",
 	/*"LeagueRequest": "competitions/$LEAGUEID$/leagueTable/?matchday=22",*/
   "LeagueRequest": {
-   	/*"Primera":"competitions/436/leagueTable/?matchday=$JOURNEY$",*/
-    /*"Segunda":"competitions/437/leagueTable/?matchday=$JOURNEY$",*/
-	"Primera":"competitions/436/leagueTable/?matchday=27",
-    "Segunda":"competitions/437/leagueTable/?matchday=29"
+   	"Primera":"competitions/436/leagueTable/?matchday=$JOURNEY$",
+    "Segunda":"competitions/437/leagueTable/?matchday=$JOURNEY$"
   	},
 	"API_URL": "http://api.football-data.org/v1/",    
 	"Csv_URLs" : [

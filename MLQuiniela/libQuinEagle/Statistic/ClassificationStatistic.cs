@@ -25,12 +25,12 @@ namespace libQuinEagle.Statistic
 			LeagueEnum liga = LeagueEnum.PRIMERA;
 
 			// primero necesitamos saber en que liga está este partido;
-			if( req.GetLeague( LeagueEnum.PRIMERA ).standing.Any( a => a.teamName == fixture.HomeTeam ) )
+			if( req.GetLeague( LeagueEnum.PRIMERA, fixture.Journey ).standing.Any( a => a.teamName == fixture.HomeTeam ) )
 				liga = LeagueEnum.PRIMERA;
 			else
 				liga = LeagueEnum.SEGUNDA;
 
-			LeagueTable tabla = req.GetLeague( liga );
+			LeagueTable tabla = req.GetLeague( liga, fixture.Journey );
 
 			int puntos_posibles = (tabla.matchday - 1) * 3;
 

@@ -14,28 +14,29 @@ namespace libQuinEagle
 		SEGUNDA = 437
 	}
 
+	[Flags]
 	public enum QuinielaResult
 	{
 		[Description( "Vacio" )]
 		VOID = 0,
 
 		[Description( "1" )]
-		ONE = 1,
+		ONE = 0x1,
 
 		[Description( "X" )]
-		X = 2,
+		X = 0x2,
 
 		[Description( "2" )]
-		TWO = 4,
+		TWO = 0x4,
 
 		[Description( "1-X" )]
-		ONEX = 3,
+		ONEX = 0x3,
 
 		[Description( "2-X" )]
-		TWOX = 6,
+		TWOX = 0x6,
 
 		[Description( "1-X-2" )]
-		ONEXTWO = 7
+		ONEXTWO = 0x7
 	}
 
 	public static class EnumUtility
