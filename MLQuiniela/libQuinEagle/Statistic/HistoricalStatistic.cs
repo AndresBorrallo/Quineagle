@@ -24,8 +24,9 @@ namespace libQuinEagle.Statistic
 			// OJO CUIDADO!! quizas haya que devolver otra cosa o hacer calculos con los resultados
 			if( statistic.NMatchs >= 5 )
 			{
-				res = statistic.WinsPercent + (statistic.DrawsPercent / 2f);
-				//res = (statistic.HomeNPoints / statistic.NPoints) * 100f;
+				//res = statistic.WinsPercent + (statistic.DrawsPercent / 2f);
+			//	res = (statistic.HomeNPoints / statistic.NPoints) * 100f;
+				res = statistic.WinsPercent;
 			}
 			else
 			{
@@ -39,8 +40,9 @@ namespace libQuinEagle.Statistic
 					Log.Debug( $"Estadisticas totales de {fixture.HomeTeam}: P.J.: {home_stats.NMatchs} || P.G.: {home_stats.WinsPercent}% || P.E.:{home_stats.DrawsPercent}% || P.P.: {home_stats.LostPercent}%" );
 					Log.Debug( $"Estadisticas totales de {fixture.AwayTeam}: P.J.: {away_stats.NMatchs} || P.G.: {away_stats.WinsPercent}% || P.E.:{away_stats.DrawsPercent}% || P.P.: {away_stats.LostPercent}%" );
 
-					res = ( home_stats.WinsPercent + ( 100 - away_stats.LostPercent - away_stats.DrawsPercent ) ) / 2;
-					Log.Debug( $"formula: ( {home_stats.WinsPercent} + (100 - {away_stats.LostPercent} - {away_stats.DrawsPercent} )) / 2 = {res}" );
+					//res = ( home_stats.WinsPercent + ( 100 - away_stats.LostPercent - away_stats.DrawsPercent ) ) / 2;
+					res = home_stats.WinsPercent;
+					//Log.Debug( $"formula: ( {home_stats.WinsPercent} + (100 - {away_stats.LostPercent} - {away_stats.DrawsPercent} )) / 2 = {res}" );
 				}
 			}
 			return res;
