@@ -47,7 +47,14 @@ namespace MLQuiniela
 			fr.PrintFixtures();
 
 			List<Fixture> predictions = new List<Fixture>();
-			fixtures.ForEach( a => predictions.Add(qc.GetResult(a)));
+			fixtures.ForEach(a =>
+			{
+				QuinielaResult qr = QuinielaResult.VOID;
+				Fixture f = new Fixture() { AwayTeam = a.AwayTeam, HomeTeam = a.HomeTeam };
+				f.Probability = qc.GetResult(a, out qr);
+				f.Result = qr;
+				predictions.Add(f);
+			});
 
 			predictions.ForEach(a => Log.Info(a.ToString()));
 

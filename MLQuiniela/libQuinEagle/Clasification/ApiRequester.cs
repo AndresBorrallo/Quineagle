@@ -93,6 +93,19 @@ namespace libQuinEagle.Clasification
 			return tabla;
 		}
 
+		public LeagueEnum GetLeague(string team)
+		{
+			LeagueEnum res = LeagueEnum.PRIMERA;
+
+			LeagueTable lt = GetLeague(LeagueEnum.PRIMERA, 1);
+
+			if (lt.standing.FirstOrDefault(a => a.teamName == team) == null)
+				res = LeagueEnum.SEGUNDA;
+
+			return res;
+		}
+			   
+
 		public void PrintLeague( LeagueEnum league, int journey )
 		{
 			LeagueTable liga = GetLeague(league,journey);

@@ -7,9 +7,10 @@ using System.Reflection;
 using libQuinEagle;
 using Newtonsoft.Json.Linq;
 using System.Linq;
-using System.Data.SQLite;
 using libQuinEagle.Clasification;
 using Newtonsoft.Json;
+using SQLite_Net.Extensions.Readers;
+using SQLite;
 
 namespace TestQuineagle
 {
@@ -22,14 +23,14 @@ namespace TestQuineagle
 
 
         /// <param name="args"></param>
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
-            // Log4Net
-            InitializeLog4net();
+			// Log4Net
+			InitializeLog4net();
 
-            // Cargamos la configuracion
-            Log.Info("Cargando configuracion");
-            Configuration configuration = JsonConvert.DeserializeObject<Configuration>(File.ReadAllText(@"./Configuration.json"));
+			// Cargamos la configuracion
+			Log.Info("Cargando configuracion");
+			Configuration configuration = JsonConvert.DeserializeObject<Configuration>(File.ReadAllText(@"./Configuration.json"));
 			// Cargamos nombres de equipos
 			Log.Info("Cargando nombres de equipos de 'TeamsNames.json'");
 			var jObject = JObject.Parse(File.ReadAllText(@"./TeamsNames.json"));
@@ -40,8 +41,8 @@ namespace TestQuineagle
 			QuinEagleCalculator qc = new QuinEagleCalculator() { configuration = configuration };
 			qc.Configure();
 
-            // Cargamos todos los partidos en una lista
-            List<Match> matches = _getMatchesStoredDB();
+	        // Cargamos todos los partidos en una lista
+	        List<Match> matches = _getMatchesStoredDB(qc);
 
 			// Seleccionamos todas las jornadas y años que tenemos partidos
 			//List<JourneyDateClassification> journeys = matches.Select(a => new JourneyDateClassification(){ journey = a.Journey, season = a.season })
@@ -54,19 +55,22 @@ namespace TestQuineagle
 			List<Match> predictions = new List<Match>();
 			matches.ForEach(m =>
 			{
-				Match match = (Match)qc.GetResult(m);
-				match.season = m.season;
+				Match match = m.Clone();
+				QuinielaResult qr = QuinielaResult.VOID;
+
+				match.fixture.Probability = qc.GetResult(m.fixture, out qr);
+				match.fixture.Result = qr;
 				predictions.Add(match);
 			});
 
 			int aciertos = matches.Where(a => predictions.Any(
-				b => b.AwayTeam == a.AwayTeam &&
-				b.HomeTeam == a.HomeTeam &&
-				b.Journey == a.Journey &&
-				(b.Result & a.Result) != QuinielaResult.VOID)).Count();
+				b => b.fixture.AwayTeam == a.fixture.AwayTeam &&
+				b.fixture.HomeTeam == a.fixture.HomeTeam &&
+				b.fixture.Journey == a.fixture.Journey &&
+				(b.fixture.Result & a.fixture.Result) != QuinielaResult.VOID)).Count();
 
 			Log.Info($"Aciertos {aciertos} de {predictions.Count}");
-			Log.Info($"Total: {aciertos / predictions.Count * 100}");
+			Log.Info($"Total: {(float)aciertos / (float)predictions.Count * 100f} %");
 
             Console.ReadKey();
         }
@@ -115,13 +119,17 @@ namespace TestQuineagle
         /// Carga todos los partidos de BBDD
         /// </summary>
         /// <returns>Lista de partidos almacenados</returns>
-        private static List<Match> _getMatchesStoredDB()
+        private static List<Match> _getMatchesStoredDB(QuinEagleCalculator qc)
         {
             List<Match> matches = new List<Match>();
 
-            SQLiteConnection conexion = new SQLiteConnection("Data Source=../../../db/quineagle.db;Version=3;New=True;Compress=True;");
-            conexion.Open();
+            //SQLiteConnection conexion = new SQLiteConnection("Data Source=../../../db/quineagle.db;Version=3;New=True;Compress=True;");
+			SQLiteConnection conexion = new SQLiteConnection("../../../db/quineagle.db");
 
+			//conexion.Open();
+			conexion.BeginTransaction();
+
+			/*
             string consulta = " select t.name, t2.name, m.result, j.number_journey, j.season " +
                               " from t_match m " +
                                     "join t_team t " +
@@ -130,26 +138,58 @@ namespace TestQuineagle
                                         "on (m.id_awayteam = t2.id_team) " +
                                     "join t_journey j " +
                                         "on (j.id_journey = m.id_journey)";
-            SQLiteCommand cmd = new SQLiteCommand(consulta, conexion);
-            SQLiteDataReader data = cmd.ExecuteReader();
+			*/
+			string consulta = "select t.name as hometeam, t2.name as awayteam, m.result as result, j.number_journey as journey, j.season as season, j.first_div as first_div, j.second_div as second_div" +
+							  " from t_match m " +
+									"join t_team t " +
+										"on (m.id_hometeam = t.id_team) " +
+									"join t_team t2 " +
+										"on (m.id_awayteam = t2.id_team) " +
+									"join t_journey j " +
+										"on (j.id_journey = m.id_journey) where j.number_journey > 5";
+			
+			//SQLiteCommand cmd = new SQLiteCommand(consulta, conexion);
+			var data = conexion.ExecuteReader(consulta);
+            //SQLiteDataReader data = cmd.ExecuteReader();
+
 
             Log.Info($"Partidos encontrados a contrastar:");
             Log.Info($"--------------------------------");
 
             // Leemos los datos de forma repetitiva
-            while (data.Read())
+            //while (data.Read())
+			foreach (var readerItem in data)
             {
-                Match m = new Match()
-                {
-					HomeTeam = Convert.ToString(data[0]),
-					AwayTeam = Convert.ToString(data[1]),
-					Result = EnumUtility.GetEnumValueFromDescription<QuinielaResult>(Convert.ToString(data[2])),
-                    Journey = Convert.ToInt32(data[3]),
-                    season = Convert.ToInt32(data[4])   
+				Log.Info(string.Join(";", readerItem.Fields.Select(e => e + ":" + readerItem[e])));
+
+				Match m = new Match()
+				{
+					fixture = new Fixture()
+					{
+						HomeTeam = Convert.ToString(readerItem["hometeam"]),
+						AwayTeam = Convert.ToString(readerItem["awayteam"]),
+						Result = EnumUtility.GetEnumValueFromDescription<QuinielaResult>(Convert.ToString(readerItem["result"]))
+					},
+					journey = new Journey() 
+					{
+						first_div = Convert.ToInt32(readerItem["first_div"]),
+						second_div = Convert.ToInt32(readerItem["second_div"]),
+						id_journey = Convert.ToInt32(readerItem["id_journey"]),
+						number_journey = Convert.ToInt32(readerItem["number_journey"]),
+						season = Convert.ToInt32(readerItem["season"])
+					}
                 };
-				Log.Debug($"{m.HomeTeam} - {m.AwayTeam}: {EnumUtility.GetDescriptionFromEnumValue(m.Result)} (Temporada:{m.season-1}/{m.season} Jornada:{m.Journey})");
-                matches.Add(m);
+				// Ahora tenemos que averiguar si es de primera o de segunda
+				if (qc.GetLeague(m.fixture.HomeTeam) == LeagueEnum.PRIMERA)
+					m.fixture.Journey = m.journey.first_div;
+				else
+					m.fixture.Journey = m.journey.second_div;
+				
+				Log.Debug($"{m.fixture.HomeTeam} - {m.fixture.AwayTeam}: {EnumUtility.GetDescriptionFromEnumValue(m.fixture.Result)} (Temporada:{m.journey.season - 1}/{m.journey.season} Jornada:{m.fixture.Journey})");
+                matches.Add(m);   
             }
+
+			conexion.Close();
 
             return matches;
         }

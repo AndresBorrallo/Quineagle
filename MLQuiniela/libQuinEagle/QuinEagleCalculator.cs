@@ -26,17 +26,19 @@ namespace libQuinEagle
 
 		private List<IStatistic> _statistics = new List<IStatistic>();
 
-		public Fixture GetResult(Fixture fixture)
+		public float GetResult(Fixture fixture, out QuinielaResult result)
 		{
-			Fixture res = new Fixture() { HomeTeam = fixture.HomeTeam, AwayTeam = fixture.AwayTeam };
+			//Fixture res = new Fixture() { HomeTeam = fixture.HomeTeam, AwayTeam = fixture.AwayTeam };
 			List<Nomio> formula = new List<Nomio>();
 
 			_statistics.ForEach(a => formula.Add(new Nomio() { Variable = a.GetStatistic(fixture), Weight = a.Weight }));
 
-			res.Probability = formula.Sum(n => n.Variable * n.Weight);
-			res.Result = _fuzzy.GetBet(res.Probability);
+			//res.Probability = formula.Sum(n => n.Variable * n.Weight);
+			//res.Result = _fuzzy.GetBet(res.Probability);
+			float probability = formula.Sum(n => n.Variable * n.Weight);;
+			result = _fuzzy.GetBet(probability);
 
-			return res;                    
+			return probability;                    
 		}
 
 		/// <summary>
@@ -99,6 +101,18 @@ namespace libQuinEagle
 										configuration.FuzzyConf.X1_2,
 										configuration.FuzzyConf.X2_2);
 			}	
+		}
+
+		public LeagueEnum GetLeague(string teamName)
+		{
+			LeagueEnum res = LeagueEnum.PRIMERA;
+
+			if (_apiRequester != null)
+				res = _apiRequester.GetLeague(teamName);
+			else
+				Log.Warn("QuinEagleCalculator no esta inicializado");
+
+			return res;
 		}
 	}
 }
