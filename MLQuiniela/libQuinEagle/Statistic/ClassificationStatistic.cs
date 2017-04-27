@@ -22,7 +22,7 @@ namespace libQuinEagle.Statistic
 		public float GetStatistic( Fixture fixture )
 		{
 			float res = 0f;
-			LeagueEnum liga = LeagueEnum.PRIMERA;
+			LeagueEnum liga = req.GetDivision( fixture.HomeTeam );
 
 			LeagueTable tabla = req.GetLeague(liga, fixture.Journey);
 
