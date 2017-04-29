@@ -63,14 +63,26 @@ namespace TestQuineagle
 				predictions.Add(match);
 			});
 
-			int aciertos = matches.Where(a => predictions.Any(
+			/*
+			 * int aciertos = matches.Where(a => predictions.Any(
 				b => b.fixture.AwayTeam == a.fixture.AwayTeam &&
 				b.fixture.HomeTeam == a.fixture.HomeTeam &&
 				b.fixture.Journey == a.fixture.Journey &&
 				(b.fixture.Result & a.fixture.Result) != QuinielaResult.VOID)).Count();
+			*/
 
-			Log.Info($"Aciertos {aciertos} de {predictions.Count}");
-			Log.Info($"Total: {(float)aciertos / (float)predictions.Count * 100f} %");
+			var aciertos = predictions.Where( a => matches.Any(
+				 b => b.fixture.AwayTeam == a.fixture.AwayTeam &&
+				 b.fixture.HomeTeam == a.fixture.HomeTeam &&
+				 b.fixture.Journey == a.fixture.Journey &&
+				 ( b.fixture.Result & a.fixture.Result ) != QuinielaResult.VOID ) ).ToList();
+
+			Log.Info($"Aciertos {aciertos.Count} de {predictions.Count}");
+			Log.Info($"Total: {(float)aciertos.Count / (float)predictions.Count * 100f} %");
+
+			Log.Info( "---------- ACIERTOS -------------------------------------------------" );
+			aciertos.ForEach( a => Log.Info(a.fixture.ToString()) );
+
 
             Console.ReadKey();
         }

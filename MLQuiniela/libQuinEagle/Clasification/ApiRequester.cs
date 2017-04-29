@@ -93,7 +93,7 @@ namespace libQuinEagle.Clasification
 			return tabla;
 		}
 
-		public LeagueEnum GetLeague(string team)
+		public LeagueEnum GetDivision(string team)
 		{
 			LeagueEnum res = LeagueEnum.PRIMERA;
 

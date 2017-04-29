@@ -108,7 +108,7 @@ namespace libQuinEagle
 			LeagueEnum res = LeagueEnum.PRIMERA;
 
 			if (_apiRequester != null)
-				res = _apiRequester.GetLeague(teamName);
+				res = _apiRequester.GetDivision(teamName);
 			else
 				Log.Warn("QuinEagleCalculator no esta inicializado");
 

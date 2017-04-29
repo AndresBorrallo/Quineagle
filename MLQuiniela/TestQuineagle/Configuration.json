@@ -1,6 +1,6 @@
 ﻿{
-	"ClasificationWeight":"0.65",
-	"HistoricWeight":"0.35",
+	"ClasificationWeight":"0.75",
+	"HistoricWeight":"0.25",
   "QuinielaFixtureURL":"https://www.quinielista.es/ayudas/module_help_other_upcoming.asp?num_jornada=43&num_temporada=2017",
 	"RequestHeader":"X-Auth-Token",
 	"API_KEY": "e43b609f63f54d40b4e78258014acef2",
@@ -54,20 +54,20 @@
     {"item1":"1415_SP2.csv","item2":"http://www.football-data.co.uk/mmz4281/1415/SP2.csv","item3":false},
     {"item1":"1516_SP1.csv","item2":"http://www.football-data.co.uk/mmz4281/1516/SP1.csv","item3":false},
     {"item1":"1516_SP2.csv","item2":"http://www.football-data.co.uk/mmz4281/1516/SP2.csv","item3":false},
-    {"item1":"1617_SP1.csv","item2":"http://www.football-data.co.uk/mmz4281/1617/SP1.csv","item3":true},
-    {"item1":"1617_SP2.csv","item2":"http://www.football-data.co.uk/mmz4281/1617/SP2.csv","item3":true}
+    {"item1":"1617_SP1.csv","item2":"http://www.football-data.co.uk/mmz4281/1617/SP1.csv","item3":false},
+    {"item1":"1617_SP2.csv","item2":"http://www.football-data.co.uk/mmz4281/1617/SP2.csv","item3":false}
   ],
 	"FuzzyConf": {
-		"X1_2": "46.0",
-		"X2_2": "48.5",
+		"X1_2": "44.0",
+		"X2_2": "45.0",
 
-		"X1_X":	"46.0",
-		"X2_X": "48.5",
-		"X3_X": "49.5",
-		"X4_X": "55.0",
+		"X1_X":	"45.01",
+		"X2_X": "48.0",
+		"X3_X": "52.0",
+		"X4_X": "54.99",
 
-		"X1_1": "49.5",
-		"X2_1": "55.0",
+		"X1_1": "55.00",
+		"X2_1": "56.0",
 
 		"MaxDoubles": "3"
 	}
