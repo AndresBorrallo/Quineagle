@@ -4,11 +4,12 @@ using System;
 using System.IO;
 using System.Reflection;
 using libQuinEagle;
-using System.Data.SQLite;
 using System.Collections.Generic;
 using System.Linq;
 using libQuinEagle.Fixtures;
 using Newtonsoft.Json.Linq;
+using SQLite;
+using SQLite_Net.Extensions.Readers;
 
 namespace UpdateDB
 {
@@ -46,27 +47,32 @@ namespace UpdateDB
 
         private static List<Journey> _getJourneysFromDB()
         {
-            SQLiteConnection conexion = new SQLiteConnection("Data Source=../../../db/quineagle.db;Version=3;New=True;Compress=True;");
-            conexion.Open();
+            SQLiteConnection conexion = new SQLiteConnection("../../../db/quineagle.db");
+            //conexion.Open();
+			conexion.BeginTransaction();
             _deleteDB(conexion);
-            string consulta = "select * from t_journey";
-            SQLiteCommand cmd = new SQLiteCommand(consulta, conexion);
-            SQLiteDataReader data = cmd.ExecuteReader();
-            List<Journey> journeys = new List<Journey>();
+            string consulta = "select number_journey, season from t_journey";
+			//SQLiteCommand cmd = new SQLiteCommand(consulta, conexion);
+			//SQLiteDataReader data = cmd.ExecuteReader();
+			var data = conexion.ExecuteReader(consulta);
+			List<Journey> journeys = new List<Journey>();
 
             Log.Info($"Jornadas encontradas a procesar:");
             Log.Info($"--------------------------------");
 
-            // Leemos los datos de forma repetitiva
-            while (data.Read())
+			// Leemos los datos de forma repetitiva
+			//while (data.Read())
+			foreach (var readerItem in data)
             {
                 int nj =0, sea = 0;
-                
-                if (data[1] != System.DBNull.Value)
-                    nj = Convert.ToInt16(data[1]);
-                
-                if (data[4] != System.DBNull.Value)
-                    sea = Convert.ToInt16(data[4]);
+
+				//if (data[1] != System.DBNull.Value)
+				if(readerItem["number_journey"] != System.DBNull.Value )
+					nj = Convert.ToInt16(readerItem["number_journey"]);
+
+				//if (data[4] != System.DBNull.Value)
+				if( readerItem["season"] != System.DBNull.Value )
+					sea = Convert.ToInt16( readerItem["season"] );
 
                 Journey j = new Journey()
                 {
@@ -109,18 +115,18 @@ namespace UpdateDB
             try
             {
                 // Abrimos la conexion
-                SQLiteConnection conexion = new SQLiteConnection("Data Source=../../../db/quineagle.db;Version=3;New=True;Compress=True;");
-                conexion.Open();
+                SQLiteConnection conexion = new SQLiteConnection("../../../db/quineagle.db");
+				conexion.BeginTransaction();
 
                 // Construimos la query para insertar
                 List<Journey> journeys = new List<Journey>();
-                string consulta = "INSERT INTO `t_match` (id_homeTeam,id_awayTeam,result,id_journey) VALUES ";
+                string consulta = "INSERT INTO t_match (id_homeTeam,id_awayTeam,result,id_journey) VALUES ";
                 foreach (var f in utilMatches)
                 {
-                    consulta += "( (SELECT id_team from `t_team` where name = '" + f.HomeTeam + "'), "
-                              + "  (SELECT id_team from `t_team` where name = '" + f.AwayTeam + "'), "
+                    consulta += "( (SELECT id_team from t_team where name = '" + f.HomeTeam + "'), "
+                              + "  (SELECT id_team from t_team where name = '" + f.AwayTeam + "'), "
                               + "'" + _parseResult(f.Result) + "',"
-                              + "(SELECT id_journey from `t_journey` where number_journey = '" + j.number_journey + "' and season = '" + j.season + "')),";
+                              + "(SELECT id_journey from t_journey where number_journey = '" + j.number_journey + "' and season = '" + j.season + "')),";
                     Log.Debug($"Jornada {j.number_journey}: {f.HomeTeam} - {f.AwayTeam} : {f.Result}");
                 }
                 consulta = consulta.TrimEnd(',');
@@ -128,15 +134,15 @@ namespace UpdateDB
                 // Si hay algun partido, lo insertamos
                 if (utilMatches.Count() > 0)
                 {
-                    SQLiteCommand cmd = new SQLiteCommand(consulta, conexion);
-                    Log.Info(cmd.ExecuteNonQuery() + " rows inserted\n");
+                    //SQLiteCommand cmd = new SQLiteCommand(consulta, conexion);
+					Log.Info($"{conexion.Execute(consulta)} rows inserted");
                 }
 
                 // Cerramos la conexion
                 conexion.Close();
             }catch(Exception e)
             {
-                Log.Error("ERROR:" + e.Message);
+				Log.Error($"ERROR: {e.Message}");
             }
         }
 
@@ -149,8 +155,9 @@ namespace UpdateDB
             try
             {
                 string consulta = "delete from t_match";
-                SQLiteCommand cmd = new SQLiteCommand(consulta, conexion);
-                cmd.ExecuteNonQuery();
+				var data = conexion.Execute(consulta);
+                //SQLiteCommand cmd = new SQLiteCommand(consulta, conexion);
+                //cmd.ExecuteNonQuery();
             }
             catch (Exception e) {
                 Log.Error("ERROR:" + e.Message);

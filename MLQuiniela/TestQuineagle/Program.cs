@@ -1,20 +1,20 @@
-﻿using log4net.Config;
-using System;
-using log4net;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using libQuinEagle;
-using Newtonsoft.Json.Linq;
-using System.Linq;
 using libQuinEagle.Clasification;
+using log4net;
+using log4net.Config;
 using Newtonsoft.Json;
-using SQLite_Net.Extensions.Readers;
+using Newtonsoft.Json.Linq;
 using SQLite;
+using SQLite_Net.Extensions.Readers;
 
 namespace TestQuineagle
 {
-    class Program
+	class Program
     {
         /// <summary>
         /// Proyecto para testeo de algoritmos frente a todos los partidos de la temporada 2017 en adelante.
