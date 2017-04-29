@@ -29,11 +29,11 @@ namespace libQuinEagle.Statistic
 			if (tabla != null)
 			{
 				// primero necesitamos saber en que liga está este partido;
-				if( tabla.standing.Any( a => a.teamName == fixture.HomeTeam ) )
+				/*if( tabla.standing.Any( a => a.teamName == fixture.HomeTeam ) )
 					liga = LeagueEnum.PRIMERA;
 				else
 					liga = LeagueEnum.SEGUNDA;
-
+				*/
 				int puntos_posibles = (tabla.matchday - 1) * 3;
 
 				var home_team = tabla.standing.Where(a => a.teamName == fixture.HomeTeam).FirstOrDefault();
