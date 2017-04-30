@@ -7,6 +7,7 @@ using MMLib.Extensions;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Text;
+using System.IO;
 
 namespace libQuinEagle.Clasification
 {
@@ -15,6 +16,8 @@ namespace libQuinEagle.Clasification
 	/// </summary>
 	public class ApiRequester
 	{
+		private const string FOLDERPATH = @"leagues";
+
 		private ILog Log { get; } = LogManager.GetLogger( MethodBase.GetCurrentMethod().DeclaringType );
 
 		public string RequestHeader { get; set; }
@@ -74,18 +77,59 @@ namespace libQuinEagle.Clasification
 				Log.Warn( e.Message );
 			}
 
+			if( table != null )
+			{
+				var fichero = $"{FOLDERPATH}/2017_{EnumUtility.GetDescriptionFromEnumValue( league )}_{journey}.json";
+				Log.Info( $"Salvando {journey} de la liga {EnumUtility.GetDescriptionFromEnumValue( league )} en fichero {fichero}" );
+				File.WriteAllText( fichero, JsonConvert.SerializeObject( table, Formatting.Indented ) );
+			}
+
 			_leagues[ league ][journey] = table;
 		}
 
+		private void _readLeagueFromFile( LeagueEnum league, int journey )
+		{
+			var fichero = $"{FOLDERPATH}/2017_{EnumUtility.GetDescriptionFromEnumValue( league )}_{journey}.json";
+			LeagueTable table = null;
+
+			try
+			{
+				table = JsonConvert.DeserializeObject<LeagueTable>( File.ReadAllText( fichero ) );
+			}
+			catch( Exception e )
+			{
+				Log.Error( $"No al leer el fichero '{fichero}': {e.Message}" );
+			}
+
+			_leagues[ league ][ journey ] = table;
+		}
+		
+
 		public LeagueTable GetLeague( LeagueEnum league, int journey )
 		{
+			// Busca en diccionario, despues en ficheros y si no lo descarga
 			LeagueTable tabla = null;
 
 			if (!_leagues[league].TryGetValue( journey, out tabla ) )
 			{
-				Log.Warn( $"No existe la jornada {journey} de la liga {EnumUtility.GetDescriptionFromEnumValue(league)}. Descargando..." );
+				Log.Info( $"No existe en memoria la jornada {journey} de la liga {EnumUtility.GetDescriptionFromEnumValue(league)}" );
 
-				_downloadLeague(league, journey);	
+				// Comprobar si existe el directorio con los ficheros csv
+				if( !Directory.Exists( FOLDERPATH ) )
+				{
+					Directory.CreateDirectory( FOLDERPATH );
+				}
+
+				if( !File.Exists( $"{FOLDERPATH}/2017_{EnumUtility.GetDescriptionFromEnumValue( league )}_{journey}.json"))
+				{
+					Log.Info( $"Descargando jornada {journey} de la liga {EnumUtility.GetDescriptionFromEnumValue(league)}" );
+					_downloadLeague( league, journey );
+				}
+				else
+				{
+					Log.Info( $"leyendo de fichero la jornada {journey} de la liga {EnumUtility.GetDescriptionFromEnumValue(league)}" );
+					_readLeagueFromFile( league, journey );
+				} 	
 			}
 
 			tabla = _leagues[league][journey];

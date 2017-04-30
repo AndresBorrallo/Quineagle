@@ -77,14 +77,44 @@ namespace TestQuineagle
 				 b.fixture.Journey == a.fixture.Journey &&
 				 ( b.fixture.Result & a.fixture.Result ) != QuinielaResult.VOID ) ).ToList();
 
+			Log.Info( "TOTALES" );
+			Log.Info( matches.Count );
+			Log.Info( $"1: {matches.Count( a => a.fixture.Result == QuinielaResult.ONE )} || {( float )matches.Count( a => a.fixture.Result == QuinielaResult.ONE ) / ( float )matches.Count * 100f } %" );
+			Log.Info( $"X: {matches.Count( a => a.fixture.Result == QuinielaResult.X )} || {( float )matches.Count( a => a.fixture.Result == QuinielaResult.X ) / ( float )matches.Count * 100f } %" );
+			Log.Info( $"2: {matches.Count( a => a.fixture.Result == QuinielaResult.TWO )} || {( float )matches.Count( a => a.fixture.Result == QuinielaResult.TWO ) / ( float )matches.Count * 100f } %" );
+
+			Log.Info( "---------------" );
+			Log.Info( "PREDICCIONES" );
+			Log.Info( $"1: {predictions.Count( a => a.fixture.Result == QuinielaResult.ONE )} || {( float )predictions.Count( a => a.fixture.Result == QuinielaResult.ONE ) / ( float )predictions.Count * 100f } %" );
+			Log.Info( $"X: {predictions.Count( a => a.fixture.Result == QuinielaResult.X )} || {( float )predictions.Count( a => a.fixture.Result == QuinielaResult.X ) / ( float )predictions.Count * 100f } %" );
+			Log.Info( $"2: {predictions.Count( a => a.fixture.Result == QuinielaResult.TWO )} || {( float )predictions.Count( a => a.fixture.Result == QuinielaResult.TWO ) / ( float )predictions.Count * 100f } %" );
+
+			Log.Info( "---------------" );
 			Log.Info($"Aciertos {aciertos.Count} de {predictions.Count}");
 			Log.Info($"Total: {(float)aciertos.Count / (float)predictions.Count * 100f} %");
+			Log.Info( "Aciertos por prediccion" );
+			Log.Info( $"1: {aciertos.Count( a => a.fixture.Result == QuinielaResult.ONE )} || {( float )aciertos.Count( a => a.fixture.Result == QuinielaResult.ONE ) / ( float )aciertos.Count * 100f } %" );
+			Log.Info( $"X: {aciertos.Count( a => a.fixture.Result == QuinielaResult.X )} || {( float )aciertos.Count( a => a.fixture.Result == QuinielaResult.X ) / ( float )aciertos.Count * 100f } %" );
+			Log.Info( $"2: {aciertos.Count( a => a.fixture.Result == QuinielaResult.TWO )} || {( float )aciertos.Count( a => a.fixture.Result == QuinielaResult.TWO ) / ( float )aciertos.Count * 100f } %" );
 
-			Log.Info( "---------- ACIERTOS -------------------------------------------------" );
-			aciertos.ForEach( a => Log.Info(a.fixture.ToString()) );
+			Log.Info( "---------------" );
+			Log.Info( "Aciertos por predicciones" );
+			Log.Info( $"1: {aciertos.Count( a => a.fixture.Result == QuinielaResult.ONE )} aciertos de {predictions.Count(a => (a.fixture.Result & QuinielaResult.ONE) != QuinielaResult.VOID)} predicciones || {( float )aciertos.Count( a => a.fixture.Result == QuinielaResult.ONE ) / ( float )predictions.Count( a => ( a.fixture.Result & QuinielaResult.ONE ) != QuinielaResult.VOID ) * 100f } %" );
+			Log.Info( $"X: {aciertos.Count( a => a.fixture.Result == QuinielaResult.X )} aciertos de {predictions.Count( a => ( a.fixture.Result & QuinielaResult.X ) != QuinielaResult.VOID )} predicciones || {( float )aciertos.Count( a => a.fixture.Result == QuinielaResult.X ) / ( float )predictions.Count( a => ( a.fixture.Result & QuinielaResult.X ) != QuinielaResult.VOID ) * 100f } %" );
+			Log.Info( $"2: {aciertos.Count( a => a.fixture.Result == QuinielaResult.TWO )} aciertos de {predictions.Count( a => ( a.fixture.Result & QuinielaResult.TWO ) != QuinielaResult.VOID )} predicciones || {( float )aciertos.Count( a => a.fixture.Result == QuinielaResult.TWO ) / ( float )predictions.Count( a => ( a.fixture.Result & QuinielaResult.TWO ) != QuinielaResult.VOID ) * 100f } %" );
+
+			Log.Info( "---------------" );
+			Log.Info( "Predicciones por resultado real" );
+			Log.Info( $"1: {predictions.Count( a => (a.fixture.Result & QuinielaResult.ONE) != QuinielaResult.VOID)} predicciones de {matches.Count( a => a.fixture.Result == QuinielaResult.ONE )} resultados reales || {( float )predictions.Count( a => a.fixture.Result == QuinielaResult.ONE ) / ( float )matches.Count( a => a.fixture.Result == QuinielaResult.ONE ) * 100f } %" );
+			Log.Info( $"X: {predictions.Count( a => ( a.fixture.Result & QuinielaResult.X ) != QuinielaResult.VOID )} predicciones de {matches.Count( a => a.fixture.Result == QuinielaResult.X )} resultados reales || {( float )predictions.Count( a => a.fixture.Result == QuinielaResult.X ) / ( float )matches.Count( a => a.fixture.Result == QuinielaResult.X ) * 100f } %" );
+			Log.Info( $"2: {predictions.Count( a => ( a.fixture.Result & QuinielaResult.TWO ) != QuinielaResult.VOID )} predicciones de {matches.Count( a => a.fixture.Result == QuinielaResult.TWO )} resultados reales || {( float )predictions.Count( a => a.fixture.Result == QuinielaResult.TWO ) / ( float )matches.Count( a => a.fixture.Result == QuinielaResult.TWO ) * 100f } %" );
 
 
-            Console.ReadKey();
+			//Log.Info( "---------- ACIERTOS -------------------------------------------------" );
+			//aciertos.ForEach( a => Log.Info(a.fixture.ToString()) );
+
+
+			Console.ReadKey();
         }
 
         private static Dictionary<int, Dictionary<LeagueEnum, LeagueTable>> _getClassifications(List<JourneyDateClassification> journeys, Configuration configuration)
@@ -158,7 +188,7 @@ namespace TestQuineagle
 									"join t_team t2 " +
 										"on (m.id_awayteam = t2.id_team) " +
 									"join t_journey j " +
-										"on (j.id_journey = m.id_journey) where j.number_journey > 5";
+				"on (j.id_journey = m.id_journey)"; // where j.number_journey > 5";
 			
 			//SQLiteCommand cmd = new SQLiteCommand(consulta, conexion);
 			var data = conexion.ExecuteReader(consulta);
@@ -172,7 +202,7 @@ namespace TestQuineagle
             //while (data.Read())
 			foreach (var readerItem in data)
             {
-				Log.Info(string.Join(";", readerItem.Fields.Select(e => e + ":" + readerItem[e])));
+				//Log.Info(string.Join(";", readerItem.Fields.Select(e => e + ":" + readerItem[e])));
 
 				Match m = new Match()
 				{
