@@ -188,7 +188,7 @@ namespace TestQuineagle
 									"join t_team t2 " +
 										"on (m.id_awayteam = t2.id_team) " +
 									"join t_journey j " +
-				"on (j.id_journey = m.id_journey)"; // where j.number_journey > 5";
+				"on (j.id_journey = m.id_journey) where j.number_journey > 2";
 			
 			//SQLiteCommand cmd = new SQLiteCommand(consulta, conexion);
 			var data = conexion.ExecuteReader(consulta);

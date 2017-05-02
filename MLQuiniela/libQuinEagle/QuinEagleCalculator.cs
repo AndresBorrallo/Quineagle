@@ -35,7 +35,7 @@ namespace libQuinEagle
 
 			//res.Probability = formula.Sum(n => n.Variable * n.Weight);
 			//res.Result = _fuzzy.GetBet(res.Probability);
-			float probability = formula.Sum(n => n.Variable * n.Weight);;
+			float probability = formula.Sum(n => n.Variable * n.Weight);
 			result = _fuzzy.GetBet(probability);
 
 			return probability;                    

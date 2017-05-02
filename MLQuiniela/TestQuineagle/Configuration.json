@@ -54,8 +54,8 @@
     {"item1":"1415_SP2.csv","item2":"http://www.football-data.co.uk/mmz4281/1415/SP2.csv","item3":false},
     {"item1":"1516_SP1.csv","item2":"http://www.football-data.co.uk/mmz4281/1516/SP1.csv","item3":false},
     {"item1":"1516_SP2.csv","item2":"http://www.football-data.co.uk/mmz4281/1516/SP2.csv","item3":false},
-    {"item1":"1617_SP1.csv","item2":"http://www.football-data.co.uk/mmz4281/1617/SP1.csv","item3":false},
-    {"item1":"1617_SP2.csv","item2":"http://www.football-data.co.uk/mmz4281/1617/SP2.csv","item3":false}
+    {"item1":"1617_SP1.csv","item2":"http://www.football-data.co.uk/mmz4281/1617/SP1.csv","item3":true},
+    {"item1":"1617_SP2.csv","item2":"http://www.football-data.co.uk/mmz4281/1617/SP2.csv","item3":true}
   ],
 	"FuzzyConf": {
 		"X1_2": "45.0",
