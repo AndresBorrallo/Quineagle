@@ -41,6 +41,11 @@ namespace libQuinEagle
 			return probability;                    
 		}
 
+		public void SetMaxDoubleBets( ref List<Fixture> fixtures )
+		{
+			_fuzzy.GetBet( ref fixtures );
+		}
+
 		/// <summary>
 		/// Carga los elementos estadisticos
 		/// </summary>

@@ -56,6 +56,8 @@ namespace MLQuiniela
 				predictions.Add(f);
 			});
 
+			qc.SetMaxDoubleBets( ref predictions );
+
 			predictions.ForEach(a => Log.Info(a.ToString()));
 
 			Log.Info($"Media calculada = {predictions.Select( a => a.Probability ).Average()}%" );
