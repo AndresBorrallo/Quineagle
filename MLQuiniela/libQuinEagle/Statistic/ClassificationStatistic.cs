@@ -24,7 +24,7 @@ namespace libQuinEagle.Statistic
 			float res = 0f;
 			LeagueEnum liga = req.GetDivision( fixture.HomeTeam );
 
-			LeagueTable tabla = req.GetLeague(liga, fixture.Journey);
+			LeagueTable tabla = req.GetLeague(liga, fixture.Journey - 1);
 
 			if (tabla != null)
 			{
@@ -34,7 +34,7 @@ namespace libQuinEagle.Statistic
 				else
 					liga = LeagueEnum.SEGUNDA;
 				*/
-				int puntos_posibles = (tabla.matchday - 1) * 3;
+				int puntos_posibles = (tabla.matchday) * 3;
 
 				var home_team = tabla.standing.Where(a => a.teamName == fixture.HomeTeam).FirstOrDefault();
 				var away_team = tabla.standing.Where(a => a.teamName == fixture.AwayTeam).FirstOrDefault();

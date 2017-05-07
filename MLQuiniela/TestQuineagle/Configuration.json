@@ -1,7 +1,7 @@
 ﻿{
-	"ClasificationWeight":"0.75",
-	"HistoricWeight":"0.25",
-  "QuinielaFixtureURL":"https://www.quinielista.es/ayudas/module_help_other_upcoming.asp?num_jornada=43&num_temporada=2017",
+	"ClasificationWeight":"0.65",
+	"HistoricWeight":"0.35",
+  "QuinielaFixtureURL":"https://www.quinielista.es/ayudas/module_help_other_upcoming.asp?num_jornada=53&num_temporada=2017",
 	"RequestHeader":"X-Auth-Token",
 	"API_KEY": "e43b609f63f54d40b4e78258014acef2",
 	/*"LeagueRequest": "competitions/$LEAGUEID$/leagueTable/?matchday=22",*/
@@ -58,16 +58,16 @@
     {"item1":"1617_SP2.csv","item2":"http://www.football-data.co.uk/mmz4281/1617/SP2.csv","item3":true}
   ],
 	"FuzzyConf": {
-		"X1_2": "45.0",
-		"X2_2": "48.5",
+		"X1_2": "40.0000",
+		"X2_2": "41.2000",
 
-		"X1_X":	"48.51",
-		"X2_X": "49.0",
-		"X3_X": "51.0",
-		"X4_X": "51.49",
+		"X1_X":	"41.2001",
+		"X2_X": "42.0000",
+		"X3_X": "48.0000",
+    "X4_X": "48.1999",
 
-		"X1_1": "51.50",
-		"X2_1": "55.0",
+		"X1_1": "48.2000",
+		"X2_1": "55.0000",
 
 		"MaxDoubles": "3"
 	}
