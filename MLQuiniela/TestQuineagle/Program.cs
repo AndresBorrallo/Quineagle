@@ -109,32 +109,32 @@ namespace TestQuineagle
 			Log.Info( $"X: {predictions.Count( a => ( a.fixture.Result & QuinielaResult.X ) != QuinielaResult.VOID )} predicciones de {matches.Count( a => a.fixture.Result == QuinielaResult.X )} resultados reales || {( float )predictions.Count( a => a.fixture.Result == QuinielaResult.X ) / ( float )matches.Count( a => a.fixture.Result == QuinielaResult.X ) * 100f } %" );
 			Log.Info( $"2: {predictions.Count( a => ( a.fixture.Result & QuinielaResult.TWO ) != QuinielaResult.VOID )} predicciones de {matches.Count( a => a.fixture.Result == QuinielaResult.TWO )} resultados reales || {( float )predictions.Count( a => a.fixture.Result == QuinielaResult.TWO ) / ( float )matches.Count( a => a.fixture.Result == QuinielaResult.TWO ) * 100f } %" );
 
-			Log.Info( "---------------" );
-			Log.Info( "Valores de 1s" );
+			Log.Debug( "---------------" );
+			Log.Debug( "Valores de 1s" );
 			var Puntos1 = predictions.Where( a => matches.Any( b => b.fixture.AwayTeam == a.fixture.AwayTeam &&
 																b.fixture.HomeTeam == a.fixture.HomeTeam &&
 																b.fixture.Journey == a.fixture.Journey &&
 			                                                  b.fixture.Result == QuinielaResult.ONE ) ).ToList();;
 
-			Puntos1.ForEach( a => Log.Info( a.fixture.Probability ) );
+			Puntos1.ForEach( a => Log.Debug( a.fixture.Probability ) );
 
-			Log.Info( "---------------" );
-			Log.Info( "Valores de Xs" );
+			Log.Debug( "---------------" );
+			Log.Debug( "Valores de Xs" );
 			var PuntosX = predictions.Where( a => matches.Any( b => b.fixture.AwayTeam == a.fixture.AwayTeam &&
 																b.fixture.HomeTeam == a.fixture.HomeTeam &&
 																b.fixture.Journey == a.fixture.Journey &&
 															  b.fixture.Result == QuinielaResult.X ) ).ToList();;
 
-			PuntosX.ForEach( a => Log.Info( a.fixture.Probability ) );
+			PuntosX.ForEach( a => Log.Debug( a.fixture.Probability ) );
 
-			Log.Info( "---------------" );
-			Log.Info( "Valores de 2s" );
+			Log.Debug( "---------------" );
+			Log.Debug( "Valores de 2s" );
 			var Puntos2 = predictions.Where( a => matches.Any( b => b.fixture.AwayTeam == a.fixture.AwayTeam &&
 																b.fixture.HomeTeam == a.fixture.HomeTeam &&
 																b.fixture.Journey == a.fixture.Journey &&
 			                                                  b.fixture.Result == QuinielaResult.TWO ) ).ToList();;
 
-			Puntos2.ForEach( a => Log.Info( a.fixture.Probability ) );
+			Puntos2.ForEach( a => Log.Debug( a.fixture.Probability ) );
 
 			Console.ReadKey();
         }
@@ -210,7 +210,7 @@ namespace TestQuineagle
 									"join t_team t2 " +
 										"on (m.id_awayteam = t2.id_team) " +
 									"join t_journey j " +
-				"on (j.id_journey = m.id_journey)"; //where j.number_journey > 2";
+				"on (j.id_journey = m.id_journey) where j.number_journey > 4";
 			
 			//SQLiteCommand cmd = new SQLiteCommand(consulta, conexion);
 			var data = conexion.ExecuteReader(consulta);

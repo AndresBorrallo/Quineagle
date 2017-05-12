@@ -136,6 +136,7 @@ namespace UpdateDB
                 {
                     //SQLiteCommand cmd = new SQLiteCommand(consulta, conexion);
 					Log.Info($"{conexion.Execute(consulta)} rows inserted");
+					conexion.Commit();
                 }
 
                 // Cerramos la conexion
@@ -156,6 +157,7 @@ namespace UpdateDB
             {
                 string consulta = "delete from t_match";
 				var data = conexion.Execute(consulta);
+				conexion.Commit();
                 //SQLiteCommand cmd = new SQLiteCommand(consulta, conexion);
                 //cmd.ExecuteNonQuery();
             }
